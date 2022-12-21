@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:20:04 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/16 12:23:34 by mnikolov         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:44:23 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Weapon:: Weapon(void)
     return ;
 }
 
-Weapon:: Weapon(std::string name)
+Weapon:: Weapon(std::string name) : type(name)
 {    
     std::cout << RED << "name constructor is called" << RESET << std::endl;
     return ;

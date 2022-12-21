@@ -6,14 +6,14 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:39 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/16 12:35:27 by mnikolov         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:45:22 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 
-HumanA:: HumanA(std::string name, Weapon &weapon)
+HumanA:: HumanA(std::string name, Weapon &weapon) : name(name), weapon(&weapon)
 {
     std::cout << RED << "HumanA constructor is called" << RESET << std::endl;
     return ;

@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:23:38 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/29 14:10:12 by mnikolov         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:21:22 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,25 @@ int Fixed:: toInt(void) const
 
 Fixed   Fixed:: operator+(Fixed const &a) const
 {
-    //std::cout << "+" << std::endl;
+    //std::cout << "TEST: +" << std::endl;
     return (this->getRawBits() + a.getRawBits());
 }
 
 Fixed   Fixed:: operator-(Fixed const &a) const
 {
-    //std::cout << "-" << std::endl;
+    //std::cout << "TEST: -" << std::endl;
     return (this->getRawBits() - a.getRawBits());
 }
 
 Fixed   Fixed:: operator*(Fixed const &a) const
 {
-    //std::cout << "*" << std::endl;
+    //std::cout << "TEST: *" << std::endl;
     return (this->getRawBits() * a.getRawBits());
 }
 
 Fixed   Fixed:: operator/(Fixed const &a) const
 {
-    //std::cout << "/" << std::endl;
+    //std::cout << "TEST: /" << std::endl;
     return (this->getRawBits() / a.getRawBits());
 }
 
@@ -133,30 +133,22 @@ Fixed   Fixed:: operator!=(Fixed const &a) const
 
 Fixed const  &Fixed:: min(Fixed const &a, Fixed const &b)
 {
-    if (a < b)
-        return (a);
-    return (b);
+    
 }
 
 Fixed    &Fixed:: min(Fixed &a, Fixed &b)
 {
-    if (a < b)
-        return (a);
-    return (b);
+    
 }
 
 Fixed const  &Fixed:: max(Fixed const &a, Fixed const &b)
 {
-    if (a > b)
-        return (a);
-    return (b);
+    
 }
 
 Fixed    &Fixed:: max(Fixed &a, Fixed &b)
 {
-    if (a > b)
-        return (a);
-    return (b);
+    
 }
 
 std::ostream & operator<<(std::ostream& os, Fixed const &obj)

@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:23:38 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/29 14:21:22 by mnikolov         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:32:17 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,88 +67,110 @@ int Fixed:: toInt(void) const
 
 Fixed   Fixed:: operator+(Fixed const &a) const
 {
-    //std::cout << "TEST: +" << std::endl;
-    return (this->getRawBits() + a.getRawBits());
+    return (this->toFloat() + a.toFloat());
 }
 
 Fixed   Fixed:: operator-(Fixed const &a) const
 {
-    //std::cout << "TEST: -" << std::endl;
-    return (this->getRawBits() - a.getRawBits());
+    return (this->toFloat() - a.toFloat());
 }
 
 Fixed   Fixed:: operator*(Fixed const &a) const
 {
-    //std::cout << "TEST: *" << std::endl;
-    return (this->getRawBits() * a.getRawBits());
+    return (this->toFloat() * a.toFloat());
 }
 
 Fixed   Fixed:: operator/(Fixed const &a) const
 {
-    //std::cout << "TEST: /" << std::endl;
-    return (this->getRawBits() / a.getRawBits());
+    return (this->toFloat() / a.toFloat());
 }
 
-Fixed   Fixed:: operator>(Fixed const &a) const
+bool   Fixed:: operator>(Fixed const &a) const
 {
-    if (this->number > a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number > a.getRawBits());
 }
 
-Fixed   Fixed:: operator<(Fixed const &a) const
+bool   Fixed:: operator<(Fixed const &a) const
 {
-    if (this->number < a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number < a.getRawBits());
 }
 
-Fixed   Fixed:: operator>=(Fixed const &a) const
+bool   Fixed:: operator>=(Fixed const &a) const
 {
-    if (this->number >= a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number >= a.getRawBits());
 }
 
-Fixed   Fixed:: operator<=(Fixed const &a) const
+bool   Fixed:: operator<=(Fixed const &a) const
 {
-    if (this->number <= a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number <= a.getRawBits());
 }
 
-Fixed   Fixed:: operator==(Fixed const &a) const
+bool   Fixed:: operator==(Fixed const &a) const
 {
-    if (this->number == a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number == a.getRawBits());
 }
 
-Fixed   Fixed:: operator!=(Fixed const &a) const
+bool   Fixed:: operator!=(Fixed const &a) const
 {
-    if (this->number != a.getRawBits())
-        return 0;
-    return 1;
+   return (this->number != a.getRawBits());
 }
 
 Fixed const  &Fixed:: min(Fixed const &a, Fixed const &b)
 {
-    
+    if (a < b)
+        return a;
+    return b;
 }
 
 Fixed    &Fixed:: min(Fixed &a, Fixed &b)
 {
-    
+    if (a < b)
+        return a;
+    return b;
 }
 
 Fixed const  &Fixed:: max(Fixed const &a, Fixed const &b)
 {
-    
+    if (a > b)
+        return a;
+    return b;
 }
 
 Fixed    &Fixed:: max(Fixed &a, Fixed &b)
 {
-    
+    if (a > b)
+        return a;
+    return b;
+}
+
+Fixed   Fixed:: operator++()
+{
+    this->number++;
+    return (*this);
+}
+
+Fixed   Fixed:: operator++(int)
+{
+    Fixed   temp;
+    temp = *this;
+
+    this->number++;
+    return (temp);
+}
+
+Fixed   Fixed:: operator--()
+{
+    this->number--;
+    return (*this);
+}
+
+Fixed   Fixed:: operator--(int)
+{
+    Fixed   temp;
+    temp = *this;
+
+    this->number--;
+    return (*this);
 }
 
 std::ostream & operator<<(std::ostream& os, Fixed const &obj)

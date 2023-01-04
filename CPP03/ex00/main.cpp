@@ -14,7 +14,7 @@
 
 int main(void) 
 {
-	ClapTrap	test("Attacker");
+	ClapTrap	test("toto");
 	std::cout << std::endl;
 	
 	test.takeDamage(6);
@@ -23,13 +23,13 @@ int main(void)
 	test.beRepaired(3);
 	std::cout << std::endl;
 	
-	test.attack("Target");
+	test.attack("tata");
 	std::cout << std::endl;
 	
 	test.takeDamage(8);
 	std::cout << std::endl;
 	
-	test.attack("Target2");
+	test.attack("foo");
 	std::cout << std::endl;
 
 	test.beRepaired(2);
@@ -38,7 +38,7 @@ int main(void)
 	// Testing copy constructor
 	ClapTrap	test2(test);
 
-	test2.attack("Target");
+	test2.attack("tata");
 	std::cout << std::endl;
 
 	test2.takeDamage(6);
@@ -47,13 +47,13 @@ int main(void)
 	test2.beRepaired(3);
 	std::cout << std::endl;
 
-	test2.attack("Target2");
+	test2.attack("foo");
 	std::cout << std::endl;
 
 	test2.takeDamage(8);
 	std::cout << std::endl;
 
-	test2.attack("Target3");
+	test2.attack("42");
 	std::cout << std::endl;
 
 	test2.beRepaired(2);

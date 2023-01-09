@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:06:26 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/09 10:53:10 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/09 10:57:13 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ class Brain
             Brain(Brain const &obj);
             ~Brain(void);
             
-
+            void    setIdeas(int i, std::string idea);
+            void    showIdeas(void);
     private:
             std::string ideas[100];
 };

@@ -1,6 +1,6 @@
-NAME = Polymorphism
+NAME = Polymorphism2
 
-SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongCat.cpp WrongAnimal.cpp Brain.cpp
 
 OBJS = $(SRCS:%.c=%.o)
 

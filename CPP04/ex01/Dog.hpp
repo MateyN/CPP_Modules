@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:30:03 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/09 10:53:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:18:22 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ class Dog : public Animal
 {
     public:
             Dog(void);
-            void operator=(Dog const &obj);
+            Dog & operator=(Dog const &obj);
             Dog(Dog const &obj);
             ~Dog(void);
-
+            void    setDogIdea(int i, std::string idea);
+            void    showDogIdea(void);
             void    makeSound(void) const;
             
     private:

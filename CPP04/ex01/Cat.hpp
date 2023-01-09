@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:29:56 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/09 10:53:22 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:18:51 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ class   Cat : public Animal
 {
     public:
             Cat(void);
-            void operator=(Cat const &obj);
+            Cat & operator=(Cat const &obj);
             Cat(Cat const &obj);
             ~Cat(void);
-
+            void    setCatIdea(int i, std::string idea);
+            void    showCatIdea(void);
             void    makeSound(void) const;
             
     private:

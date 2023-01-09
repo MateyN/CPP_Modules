@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:29:53 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/09 10:00:27 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:37:54 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Cat:: Cat(void)
 {
     type = "Cat";
+    brain = new Brain();
     std::cout << GREEN << "Cat constructor is called." << RESET << std::endl;
 }
 
@@ -24,14 +25,16 @@ Cat:: Cat(Cat const &obj)
     *this = obj;
 }
 
-void Cat:: operator=(Cat const &obj)
+Cat & Cat:: operator=(Cat const &obj)
 {
     std::cout << YELLOW << "Cat copy assignment operator is called." << RESET << std::endl;
     type = obj.type;
+    return *this;
 }
 
 Cat:: ~Cat(void)
 {
+    delete brain;
     std::cout << RED << "Cat destructor is called." << RESET << std::endl;
     return ;
 }
@@ -39,4 +42,14 @@ Cat:: ~Cat(void)
 void    Cat:: makeSound(void) const
 {
     std::cout << BLUE << "Cat: Meow meow!" << RESET << std::endl;
+}
+
+void    Cat:: setCatIdea(int i, std::string idea)
+{
+    brain->setIdeas(i, idea);
+}
+
+void    Cat:: showCatIdea()
+{
+    brain->showIdeas();
 }

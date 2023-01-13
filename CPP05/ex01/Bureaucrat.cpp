@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:39:41 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/11 12:35:43 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:02:51 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ Bureaucrat:: Bureaucrat(std::string name, int grade) : _name(name)
     if (1 <= grade && grade <= 150)
         _grade = grade;
     if (grade < 1)
-        throw GradeTooHighException();
+        throw Bureaucrat:: GradeTooHighException();
     if (grade > 150)
-        throw GradeTooLowException();
+        throw Bureaucrat:: GradeTooLowException();
 }
 
 Bureaucrat:: Bureaucrat(Bureaucrat const &obj) : _name(obj._name)
@@ -68,7 +68,7 @@ void Bureaucrat:: increment(void)
         std::cout << BLUE << "Grade incremented to: " << _grade << RESET << std::endl;
     }
     else
-        throw GradeTooHighException();
+        throw Bureaucrat:: GradeTooHighException();
 }
 
 void Bureaucrat:: decrement(void)
@@ -80,10 +80,18 @@ void Bureaucrat:: decrement(void)
         std::cout << BLUE << "Grade decremented to: " << _grade << RESET << std::endl;
     }
     else
-        throw GradeTooLowException();
+        throw Bureaucrat:: GradeTooLowException();
 }
 
-std::ostream & operator<<(std::ostream &os, Bureaucrat &obj)
+void Bureaucrat:: signForm(std::string str, bool sign)
+{
+    if (sign == true)
+        std::cout << COLOR << _name << " signed " << str << RESET << std::endl;
+    else
+        std::cout << MAGENTA << _name << " couldn't sign " << str << " because the grade is too low" << RESET << std::endl;
+}
+
+std::ostream & operator<<(std::ostream & os, Bureaucrat & obj)
 {
     os << "Bureaucrat " << obj.getName() << "graded with: " << obj.getGrade();
     return os;

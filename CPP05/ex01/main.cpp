@@ -16,7 +16,7 @@ int main()
 {
 	try
 	{
-		Form form1("Form 1", 20, 10);
+		Form form1("Form 1", -2, 0);
 		std::cout << "Form created with attributes: " << form1 << std::endl;
 	}
 	catch(std::exception & e)
@@ -31,7 +31,7 @@ int main()
 		Form form2("Form 2", 20, 10);
 		std::cout << "Form created with attributes: " << form2 << std::endl;
 
-		Bureaucrat bureaucrat1("Bureaucrat 1", 3);
+		Bureaucrat bureaucrat1("Bureaucrat 1", 30);
 		try
 		{
 			form2.beSigned(bureaucrat1);

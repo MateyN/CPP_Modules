@@ -6,16 +6,15 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:18:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/16 11:45:44 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:16:07 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form:: Form(void) : _name("Unknown"), _signed(false), _gradeToSign(0), _gradeToExec(10)
+Form:: Form(void) : _name("Unknown"), _signed(false), _gradeToSign(0), _gradeToExec(0)
 {
     std::cout << GREEN << "Form constructor called without name or grade" << RESET << std::endl;
-    throw std::string ("Error: Form cannot be instantiated without a grade!");
 }
 
 Form:: Form(std::string name, int gradeSign, int gradeExec) : _name(name), _signed(false), _gradeToSign(gradeSign), _gradeToExec(gradeExec)

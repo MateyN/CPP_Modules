@@ -1,10 +1,15 @@
-NAME = Form
+NAME =	Form2
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRCS =	main.cpp \
+		Bureaucrat.cpp \
+		Form.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = 	$(SRCS:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS =	-Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

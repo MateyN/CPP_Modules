@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:39:48 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/20 11:06:38 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:37:00 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,31 @@
 int main()
 {
 
-	Intern intern;
+	Intern someRandomIntern;
 	Bureaucrat bureaucrat("Bureaucrat 1", 1);
 	Form* id;
-	Form* robotomy;
-	Form* presidential;
-	Form* shrubbery;
+	Form* rrf;
+	Form* prf;
+	Form* shcf;
 
 	std::cout << std::endl;
 
 	try
 	{
-	id = intern.makeForm("fake id", "Travel");
+	id = someRandomIntern.makeForm("fake id", "Travel");
 
 	std::cout << std::endl;
 
-	robotomy = intern.makeForm("robotomy request", "President");
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
 	std::cout << std::endl;
 
-	presidential = intern.makeForm("presidential pardon", "Pardon");
+	prf = someRandomIntern.makeForm("presidential pardon", "Pardon");
 
 	std::cout << std::endl;
 
-	shrubbery = intern.makeForm("shrubbery creation", "Home");
-	shrubbery->execute(bureaucrat);
+	shcf = someRandomIntern.makeForm("shrubbery creation", "Home");
+	shcf->execute(bureaucrat);
 	}
 
 	catch(std::exception & e)
@@ -48,9 +48,9 @@ int main()
    	}
 
 	delete id;
-	delete robotomy;
-	delete presidential;
-	delete shrubbery;
+	delete rrf;
+	delete prf;
+	delete shcf;
 
 	return 0;
 }

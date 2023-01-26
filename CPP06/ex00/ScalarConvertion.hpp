@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:49:08 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/23 13:27:37 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:03:37 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,18 @@
 #define YELLOW  "\033[33m"
 #define BLUE    "\033[1m\033[36m"
 
-#include <iostream>
-#include <cmath>
-#include <stdexcept>
+#define NAN_INF 1
+#define CHAR 2
+#define INT 3
+#define FLOAT 4
+#define DOUBLE 5
+#define ERROR 6
 
+#include <string>
+#include <iostream>
+#include <limits>
+#include <cstdlib>
+#include <cctype>
 class Convert
 {
     public:
@@ -46,6 +54,14 @@ class Convert
             int         getInt(void) const;
             float       getFloat(void) const;
             double      getDouble(void) const;
+
+            void        fromChar(void);
+            void        fromInt(void);
+            void        fromFloat(void);
+            void        fromDouble(void);
+
+            void        displayOutput(void) const;
+            void        convertInput(void);
 
             const std::string   _input;
             int                 _type;

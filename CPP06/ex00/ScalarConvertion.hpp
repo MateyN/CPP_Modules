@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:49:08 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/26 11:03:37 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:12:49 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #define RED     "\033[31m"
 #define YELLOW  "\033[33m"
 #define BLUE    "\033[1m\033[36m"
+#define COLOR   "\033[1m\033[38m"
+#define MAGENTA "\033[1m\033[35m"
 
 #define NAN_INF 1
 #define CHAR 2
@@ -61,7 +63,8 @@ class Convert
             void        fromDouble(void);
 
             void        displayOutput(void) const;
-            void        convertInput(void);
+            int	        checkInput();
+            void        convertInput();
 
             const std::string   _input;
             int                 _type;

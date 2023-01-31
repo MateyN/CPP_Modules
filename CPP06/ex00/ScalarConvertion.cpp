@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:49:05 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/26 11:16:52 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/01/31 09:52:03 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ Convert:: Convert(void)
     std::cout << GREEN << "Default constructor is called." << RESET << std::endl;
 }
 
-Convert:: Convert(const std::string input)
+Convert:: Convert(const std::string input) : _input(input)
 {
-    std::cout << GREEN << "Convert constructor for " << this->getInput() << " is called." << RESET << std::endl;
+    std::cout << GREEN << "Convert constructor for '" << this->getInput() << "' is called." << RESET << std::endl;
+    this->_double = atof(this->getInput().c_str()); // Parses the string, interpreting its content as a floating point number and returns its value as a double.
+    this->convertInput();
     this->displayOutput();
 }
 
-Convert:: Convert(Convert const &obj)
+Convert:: Convert(Convert const &obj) : _input(obj.getInput())
 {
     std::cout << YELLOW << "Convert copy constructor is called." << RESET << std::endl;
     *this = obj;
+    this->displayOutput();
 }
 
 Convert:: ~Convert(void)
@@ -107,6 +110,71 @@ void    Convert:: fromDouble(void)
     this->_int = static_cast<int>(getDouble());
     this->_float = static_cast<float>(getDouble());
 }
+int Convert::checkInput() // catches, handle and prevents all kind of misalignments in the output
+{
+	if (this->getInput().compare("nan") == 0 || this->getInput().compare("+inf") == 0 ||
+		this->getInput().compare("-inf") == 0 || this->getInput().compare("+inff") == 0 ||
+		this->getInput().compare("-inff") == 0)
+	{
+		return (NAN_INF);
+	}
+	else if (this->getInput().size() == 1 &&
+		(this->getInput()[0] == '+' || this->getInput()[0] == '-' || // prevents that the input of single digit integers get interpreted as a char
+		this->getInput()[0] == 'f' || this->getInput()[0] == '.'))
+	{
+		return (CHAR);
+	}
+    else if (this->getInput().find_first_of("+-") != this->getInput().find_last_of("+-")) // prevents mixed + and -
+        return (ERROR);
+    else if (this->getInput().find_first_not_of("+-0123456789") == std::string::npos)
+        return (INT);
+    else if (this->getInput().find_first_not_of("+-0123456789.") == std::string::npos)
+    {
+        if (this->getInput().find_first_of(".") != this->getInput().find_last_of(".") || // finds 0..0
+        isdigit(this->getInput()[this->getInput().find_first_of(".") + 1]) == false ||  // finds 0.
+        this->getInput().find_first_of(".") == 0) // finds .0
+            return (ERROR);
+        else
+            return (DOUBLE); 
+    }
+    else if (this->getInput().find_first_not_of("+-0123456789.f") == std::string::npos)
+    {
+        if (this->getInput().find_first_of("f") != this->getInput().find_last_of("f") || // finds 0.0ff
+        this->getInput().find_first_of(".") != this->getInput().find_last_of(".") || // finds 0..0f
+        this->getInput().find_first_of("f") - this->getInput().find_first_of(".") == 1 || // finds 0.f
+        this->getInput().find_first_of(".") == 0 || this->getInput()[this->getInput().find_first_of("f") + 1] != '\0') // finds 0.0f0
+            return (ERROR);
+        else
+            return (FLOAT);
+    }
+    else if ((this->getInput().size() == 1 && std::isprint(this->getInput()[0])) ||
+		(this->getInput().size() == 1 && std::isalpha(this->getInput()[0])))
+	{
+		return (CHAR);
+	}
+    else
+        return (ERROR);
+}
+
+void	Convert::convertInput(void) // used to select a function to be executed based on the run-time values.
+{
+	void (Convert:: *funcPTR[])(void) = {&Convert:: fromChar, &Convert:: fromInt, &Convert:: fromDouble, &Convert:: fromFloat};
+    int types[] = {CHAR, INT, DOUBLE, FLOAT};
+    this->_type = checkInput();
+    if (this->getType() == NAN_INF)
+        return ;
+    int i;
+    for (i = 0; i < 4; i++)
+    {
+        if (this->getType() == types[i])
+        {
+            (this->*funcPTR[i])();
+            break;
+        }
+    }
+    if (i == 4)
+    throw Convert:: ErrorException();
+}
 
 void    Convert:: displayOutput(void) const
 {
@@ -114,7 +182,7 @@ void    Convert:: displayOutput(void) const
     if (this->getType() != NAN_INF && this->getChar() >= 0)
     {
         if(isprint(this->getChar()))
-            std::cout << "char: " << this->getChar() << " " << std::endl;
+            std::cout << COLOR << "char: " << RESET << "'" << this->getChar() << "'" << std::endl;
         else
             std::cout << "char: Non displayable" << std::endl;
     }
@@ -123,14 +191,14 @@ void    Convert:: displayOutput(void) const
     //INT
     if (this->getType() != NAN_INF && this->getInt() >= std::numeric_limits<int>::min() && this->getInt() <= std::numeric_limits<int>::max())
     {
-        std::cout << "int: " << this->getInt() << std::endl;
+        std::cout << COLOR << "int: " << RESET << this->getInt() << std::endl;
     }
     else
         std::cout << "int: impossible" << std::endl;
     //FLOAT
     if (this->getType() != NAN_INF)
     {
-        std::cout << "float: " << this->getFloat();
+        std::cout << COLOR << "float: " << RESET << this->getFloat();
         if (this->getFloat() - this->getInt() == 0)
             std::cout << ".0f" << std::endl;
         else
@@ -148,7 +216,7 @@ void    Convert:: displayOutput(void) const
     //DOUBLE
     if (this->getType() != NAN_INF)
     {
-        std::cout << "double: " << this->getDouble() << std::endl;
+        std::cout << COLOR << "double: " << RESET << this->getDouble();
         if (this->getDouble() <= std::numeric_limits<int>::min() ||
             this->getDouble() >= std::numeric_limits<int>::max() || this->getDouble() - this->getInt() == 0)
             {
@@ -167,7 +235,3 @@ void    Convert:: displayOutput(void) const
             std::cout << "double: -inf" << std::endl;
     }
 }
-
-// handle/check input, pseudo literals, *numeric limits
-// exceptions
-// 

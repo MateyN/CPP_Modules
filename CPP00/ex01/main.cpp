@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:10 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/20 12:58:00 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:54:55 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,21 @@ int userInput(Contact *newMember)
         "Enter PhoneNumber: ",
         "Enter DarkestSecret: "};
     int i;
-
+    // Declare three variables: buff which is used to store user input,
+    // entries, an array of five strings which contains prompts for user input,
+    // and i, an integer that is used as a counter for the while loop.
     i = 0;
     while (i < 5)
     {
         std::cout << BOLDYELLOW << entries[i] << RESET << std::endl;
         if (std::getline(std::cin, buff))
+        // Getting the user's input and stores it in the buff variable.
+        // Checks if the input was successful and if so, proceeds with the next step.
         {
             if (buff.size())
+            // Checks if the user input is not empty. 
+            // If it's not empty, we update the corresponding attribute with the user input.
+            // The i counter is then incremented. If the user input is empty, an error message is printed.
             {
                 newMember->update(buff, i);
                 i++;

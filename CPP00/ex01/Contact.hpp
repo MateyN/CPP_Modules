@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:00 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/09 13:33:10 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:39:37 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ class Contact
             Contact(void);
             ~Contact(void);
 
-            Contact &operator = (Contact info);
+                // Overloads the = operator to allow one Contact object to be assigned the values of another Contact object. 
+            Contact &operator=(Contact info);
             
             void        update(std::string name, int idx);
+                // Member functions that return the value of a specific field of the Contact object.
             std::string getFirstName();
             std::string getLastName();
             std::string getNickName();
@@ -50,6 +52,7 @@ class Contact
             std::string getDarkestSecret();
 
     private:
+                // Instance variables that store the values of a Contact object's fields
             std::string firstname;
             std::string lastname;
             std::string nickname;

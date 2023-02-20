@@ -6,12 +6,13 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:14:50 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/09 13:14:52 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:32:58 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+// Initializes the private data members of a Contact object to empty strings.
 Contact:: Contact(void)
 {
     this->firstname = "";
@@ -50,7 +51,11 @@ std::string Contact::getDarkestSecret()
 {
     return (this->darkestsecret);
 }
-
+/*
+Updates a specific attribute of the contact, depending on the index that is passed in. 
+For example, if the index is 0, 
+the function updates the first name of the contact by setting the firstname member variable to the name argument.
+*/
 void    Contact::update(std::string name, int idx)
 {
     if (idx == 0)
@@ -64,7 +69,10 @@ void    Contact::update(std::string name, int idx)
     else if (idx == 4)
         this->darkestsecret = name;
 }
-
+/*
+Takes in a Contact object as an argument, copies its attributes to the current object,
+and returns a reference to it.
+*/
 Contact &Contact::operator = (Contact info)
 {
     this->firstname = info.getFirstName();

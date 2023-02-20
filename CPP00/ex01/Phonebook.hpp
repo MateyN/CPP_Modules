@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:21 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/09 13:33:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:26:03 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ class Phonebook
             Phonebook(void);
             ~Phonebook(void);
 
-            void        addContact(Contact &newMember);
-            void        displayAll(void);
-            void        searchContact(std::string idx);
-            void        displayMember(int i);
-            void        displayStart(void);
-            std::string replace(std::string str);
+            void        addContact(Contact &newMember); // takes a Contact object by reference and adds it to the phonebook.
+            void        displayAll(void); // displays all contacts in the phonebook.
+            void        searchContact(std::string idx); // takes an index and searches the phonebook for a matching contact.
+            void        displayMember(int i); // displays the details of a single contact.
+            void        displayStart(void); // displays the column headers for the contact list.
+            std::string replace(std::string str); // replaces any non-printable characters in a string with a dot
             int         isDigit(std::string str);
 
     private:
             Contact list[8];
-            int     pos;
-            int     i;
+            int     pos; // keeps track of the current position in the phonebook.
+            int     i; // keeps track of the number of contacts in the phonebook.
 };
 
 #endif

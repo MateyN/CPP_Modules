@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:10 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/20 13:54:55 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:56:25 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int userInput(Contact *newMember)
         "Enter PhoneNumber: ",
         "Enter DarkestSecret: "};
     int i;
-    // Declare three variables: buff which is used to store user input,
-    // entries, an array of five strings which contains prompts for user input,
-    // and i, an integer that is used as a counter for the while loop.
+    // Declare three variables: buff -> which is used to store user input.
+    // entries -> an array of five strings which contains prompts for user input,
+    // i -> an integer that is used as a counter for the while loop.
     i = 0;
     while (i < 5)
     {

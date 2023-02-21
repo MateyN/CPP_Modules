@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:00:47 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/15 11:09:51 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:42:34 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 
 int main(void)
 {
-    std::string str;
-    std::string *stringPTR;
-    std::string &stringREF = str;
+    std::string string = "HI THIS IS BRAIN";
+    std::string *strPTR = &string;
+    std::string &strREF = string;
 
-    str = "HI THIS IS BRAIN";
-    stringPTR = &str;
+    std::cout << "the address of the string: " << &string << std::endl;
+    std::cout << "the address of the strPTR: " << strPTR << std::endl;
+    std::cout << "the address of the strREF: " << &strREF << std::endl;
 
-    std::cout << "the address of str: " << &str << std::endl;
-    std::cout << "the address of stringPTR: " << &stringPTR << std::endl;
-    std::cout << "the address of stringREF: " << &stringREF << std::endl;
+    std::cout << std::endl;
 
-    std::cout << "the value of str: " << str << std::endl;
-    std::cout << "the value of stringPTR: " << *stringPTR << std::endl;
-    std::cout << "the value of stringREF: " << stringREF << std::endl;
+    std::cout << "the value of the string: " << string << std::endl;
+    std::cout << "the value of the strPTR: " << *strPTR << std::endl;
+    std::cout << "the value of the strREF: " << strREF << std::endl;
 }

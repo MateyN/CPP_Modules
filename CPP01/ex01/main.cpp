@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 11:26:52 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/15 10:22:20 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:29:23 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ Zombie* zombieHorde(int N, std::string name);
 
 int main(void)
 {
-    Zombie  *tab = zombieHorde(1, "Zombie");
+    Zombie  *tab = zombieHorde(10, "Zombie");
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 10; i++)
         tab->announce();
         delete [] tab;
 }

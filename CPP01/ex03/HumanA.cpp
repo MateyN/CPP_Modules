@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:39 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/21 10:45:22 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:58:51 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 HumanA:: HumanA(std::string name, Weapon &weapon) : name(name), weapon(&weapon)
 {
-    std::cout << RED << "HumanA constructor is called" << RESET << std::endl;
+    std::cout << GREEN << "HumanA constructor is called" << RESET << std::endl;
     return ;
 }
 

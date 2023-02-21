@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/21 10:45:08 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/21 09:59:01 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 HumanB:: HumanB(std::string _name) : name(_name), weapon(NULL)
 {
-    std::cout << RED << "HumanB constructor is called" << RESET << std::endl;
+    std::cout << GREEN << "HumanB constructor is called" << RESET << std::endl;
     return ;
 }
 

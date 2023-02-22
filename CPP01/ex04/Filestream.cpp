@@ -6,12 +6,17 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:01:22 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/22 10:41:40 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:30:20 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Filestream.hpp"
-
+/*
+ifstream is used to read data from a file,
+and ofstream is used to write data to a new file that will contain the modified content of the original file.
+* ifstream stands for "input file stream" and is used for reading data from a file,
+while ofstream stands for "output file stream" and is used for writing data to a file.
+*/
 Filestream:: Filestream(void)
 {
     return ;
@@ -24,19 +29,20 @@ Filestream:: ~Filestream(void)
 
 int Filestream:: replaceFile(std::string fileName, std::string s1, std::string s2)
 {
-    std::ifstream   ifs(fileName);
-    std::string     newFile(fileName);
-    std::string     buff;
+    std::ifstream   ifs(fileName); // creates an ifstream object called ifs and opens the file with the name specified in the fileName parameter.
+    std::string     newFile(fileName); // creates a new string called newFile and initializes it to be the same as the fileName parameter
+    std::string     buff; // appends the string ".replace" to the end of newFile
 
     newFile += ".replace";
-    std::ofstream   ofs(newFile);
+    std::ofstream   ofs(newFile); // creates an ofstream object called ofs and opens the new file
     while (getline(ifs, buff))
     {
-        if (buff.compare(s1) == 0)
-            ofs << s2 << std::endl;
+        if (buff.compare(s1) == 0) // checks if the line contains the string specified in the s1 parameter.
+            ofs << s2 << std::endl; // writes the replacement string specified in the s2 parameter to the output file
         else
-            ofs << buff << std::endl;
+            ofs << buff << std::endl; // writes the original line to the output file if the line does not contain the string specified in s1
     }
+    // closes both the input and output files
     ifs.close();
     ofs.close();
     return 0;

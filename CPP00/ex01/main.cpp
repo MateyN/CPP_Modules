@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:10 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/20 13:56:25 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:49:27 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,5 @@ int main()
         // Print a message to the user asking for input again
         std::cout << BOLDGREEN << "Please enter one of the following: ADD, SEARCH or EXIT" << RESET << std::endl;
     }
-
-    // Return 0 to indicate successful termination of the program
     return 0;
 }

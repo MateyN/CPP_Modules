@@ -4,7 +4,7 @@ CXX		=	c++
 
 SRCS = Phonebook.cpp Contact.cpp main.cpp
 
-OBJS = $(SRCS:%.c=%.o)
+OBJS = $(SRCS:.cpp=.o)
 
 CXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -13,7 +13,7 @@ CXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME) : $(OBJS)
 	$(CXX) $(CXFLAGS) $^ -o $@
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:16 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/20 13:23:57 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:44:22 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void    Phonebook::displayAll(void)
 
 int Phonebook::isDigit(std::string str)
 {
-    int i;
+    unsigned long int i = 0;
 
-    while (i < str.size())
+    while (i < str.length())
     {
         if (str[i] < '0' || str[i] > '9')
             return 1;

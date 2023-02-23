@@ -132,8 +132,7 @@ void Phonebook::searchContact(std::string index)
 The Phonebook::addContact method adds a new contact to the phone book array,
 increments the count of the number of contacts in the phone book,
 and updates the current position in the array to the next available slot.
-If the end of the array is reached,
-the current position is reset to the beginning of the array to overwrite the oldest contact.
+If the end of the array is reached, the current position is changed.
 */
 void Phonebook::addContact(Contact &newMember)
 {
@@ -146,8 +145,7 @@ void Phonebook::addContact(Contact &newMember)
     this->list[this->pos] = newMember;
     // Add the new contact to the current position in the phone book array.
     this->pos++;
-    if (this->pos > 7)
+    if (this->pos > 7) // checks if we reached the last slot if we do we will change the last index if new contact is added.
         this->pos = 7;
-    // Move the current position to the next available slot in the phone book array.
     return;
 }

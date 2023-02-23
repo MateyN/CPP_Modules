@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:23:41 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/29 10:26:08 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 08:31:19 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class Fixed
             int         toInt(void) const;
 
     private:
-            static const int    storeBits = 8;
-            int                 number;
+            static const int    fractionalBits = 8;
+            int                 fixedPointValue;
 };
         std::ostream & operator<<(std::ostream& os, Fixed const &obj);
 #endif

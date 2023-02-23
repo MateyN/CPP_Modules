@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:23:38 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/28 10:49:45 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 09:14:36 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void ft_putchar(std::string str)
 Fixed:: Fixed(void)
 {
     ft_putchar(BLUE "Default constructor called" RESET);
-    this->number = 0;
+    this->fixedPointValue = 0;
     return ;
 }
 
@@ -39,19 +39,19 @@ Fixed:: Fixed(Fixed &a)
 Fixed &	Fixed:: operator=(Fixed &a)
 {
     ft_putchar(YELLOW "Copy assignment operator called" RESET);
-    this->number = a.getRawBits();
+    this->fixedPointValue = a.getRawBits();
     return (*this);
 }
 
 int Fixed:: getRawBits(void) const
 {
     ft_putchar(GREEN "getRawBits member function called" RESET);
-    return (this->number);
+    return (this->fixedPointValue);
 }
 
 void    Fixed:: setRawBits(int const raw)
 {
     ft_putchar(GREEN "setRawBits member function called" RESET);
-    this->number = raw;
+    this->fixedPointValue = raw;
     return ;
 }

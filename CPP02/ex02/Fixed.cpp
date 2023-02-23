@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 12:23:38 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/30 12:32:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 09:15:39 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed:: Fixed(void)
 {
-    this->number = 0;
+    this->fixedPointValue = 0;
     return ;
 }
 
@@ -30,39 +30,39 @@ Fixed:: Fixed(Fixed const &a)
 
 Fixed:: Fixed(const int a)
 {
-    this->number = (a << storeBits);
+    this->fixedPointValue = (a << fractionalBits);
 }
 
 Fixed:: Fixed(const float a)
 {
-    this->number = roundf(a * (1 << storeBits));
+    this->fixedPointValue = roundf(a * (1 << fractionalBits));
 }
 
 Fixed &	Fixed:: operator=(Fixed const &a)
 {
-    this->number = a.getRawBits();
+    this->fixedPointValue = a.getRawBits();
     return (*this);
 }
 
 int Fixed:: getRawBits(void) const
 {
-    return (this->number);
+    return (this->fixedPointValue);
 }
 
 void    Fixed:: setRawBits(int const raw)
 {
-    this->number = raw;
+    this->fixedPointValue = raw;
     return ;
 }
 
 float   Fixed:: toFloat(void) const
 {
-    return ((float)(this->number) / (float) (1 << storeBits));
+    return ((float)(this->fixedPointValue) / (float) (1 << fractionalBits));
 }
 
 int Fixed:: toInt(void) const
 {
-    return (this->number >> storeBits);
+    return (this->fixedPointValue >> fractionalBits);
 }
 
 Fixed   Fixed:: operator+(Fixed const &a) const
@@ -87,32 +87,32 @@ Fixed   Fixed:: operator/(Fixed const &a) const
 
 bool   Fixed:: operator>(Fixed const &a) const
 {
-   return (this->number > a.getRawBits());
+   return (this->fixedPointValue > a.getRawBits());
 }
 
 bool   Fixed:: operator<(Fixed const &a) const
 {
-   return (this->number < a.getRawBits());
+   return (this->fixedPointValue < a.getRawBits());
 }
 
 bool   Fixed:: operator>=(Fixed const &a) const
 {
-   return (this->number >= a.getRawBits());
+   return (this->fixedPointValue >= a.getRawBits());
 }
 
 bool   Fixed:: operator<=(Fixed const &a) const
 {
-   return (this->number <= a.getRawBits());
+   return (this->fixedPointValue <= a.getRawBits());
 }
 
 bool   Fixed:: operator==(Fixed const &a) const
 {
-   return (this->number == a.getRawBits());
+   return (this->fixedPointValue == a.getRawBits());
 }
 
 bool   Fixed:: operator!=(Fixed const &a) const
 {
-   return (this->number != a.getRawBits());
+   return (this->fixedPointValue != a.getRawBits());
 }
 
 Fixed const  &Fixed:: min(Fixed const &a, Fixed const &b)
@@ -145,7 +145,7 @@ Fixed    &Fixed:: max(Fixed &a, Fixed &b)
 
 Fixed   Fixed:: operator++()
 {
-    this->number++;
+    this->fixedPointValue++;
     return (*this);
 }
 
@@ -154,13 +154,13 @@ Fixed   Fixed:: operator++(int)
     Fixed   temp;
     temp = *this;
 
-    this->number++;
+    this->fixedPointValue++;
     return (temp);
 }
 
 Fixed   Fixed:: operator--()
 {
-    this->number--;
+    this->fixedPointValue--;
     return (*this);
 }
 
@@ -169,7 +169,7 @@ Fixed   Fixed:: operator--(int)
     Fixed   temp;
     temp = *this;
 
-    this->number--;
+    this->fixedPointValue--;
     return (*this);
 }
 

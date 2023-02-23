@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 12:47:29 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/03 14:02:47 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:38:41 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,49 +74,59 @@ int ClapTrap:: getAttackDamage(void) const
     return this->attackDamage;
 }
 
-void    ClapTrap:: attack(const std::string& target)
+void ClapTrap::attack(const std::string& target)
 {
+    // Check if the ClapTrap has enough Energy and Hit points to attack
     if (this->Energy > 0 && this->Hit > 0)
     {
+        // Create a new ClapTrap instance to attack the target
         ClapTrap instance(target);
         std::cout << GREEN << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
-        instance.takeDamage(attackDamage);
-        this->Energy--;
+        instance.takeDamage(attackDamage); // Call the 'takeDamage' method of the new ClapTrap instance to deduct the damage caused
+        this->Energy--; // Deduct 1 point of Energy from the attacking ClapTrap instance
         std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
+    // If the ClapTrap doesn't have enough Energy or Hit points to attack, print a message indicating so
     else
         std::cout << this->Name << " doesn't have enough hit pts to attack" << std::endl;
     return ;
 }
 
-void    ClapTrap:: takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (this->Hit > amount)
+    // If the amount of damage received is less than or equal to the current hit points,
+    // subtract the damage from the current hit points. Otherwise, set hit points to 0.
+    if (this->Hit > static_cast<int>(amount)) // to fix compile error for different signs
         this->Hit -= amount;
     else
         this->Hit = 0;
     std::cout << GREEN << this->Name << " has taken damage of " << amount <<
-    " points and now has: " << this->Hit << " hit points left" << RESET << std::endl;
-    return ;
+        " points and now has: " << this->Hit << " hit points left" << RESET << std::endl;
+    return;
 }
 
-void    ClapTrap:: beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->Energy > 0 && this->Hit > 0)
+    // Check if the ClapTrap has enough energy and hit points to be repaired
+    if (this->Energy != 0 && this->Hit != 0)
     {
-        this->Hit += amount;
-        this->Energy--;
-    		std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
-            this->Hit << " hit points left." << std::endl << "To be repaired, " <<
+        this->Hit += amount; // Increase the ClapTrap's hit points by the given amount
+        --this->Energy; // Decrease the ClapTrap's energy by 1 
+        std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
+            this->Hit << " hit points left." << std::endl <<
             this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
-	}
-	else
-		std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
-    return ;
+    }
+    else
+    {
+        std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
+    }
+    return;
 }
 
-std::ostream &operator<<(std::ostream& os, ClapTrap const &obj)
+// This operator<< overload function for the ClapTrap class enables an object of ClapTrap to be printed to an output stream.
+// When called, it will write the string "ClapTrap: " followed by the name of the ClapTrap object to the output stream.
+std::ostream &operator<<(std::ostream& os, ClapTrap const &obj) // It takes two arguments: a reference to an output stream and a constant reference to a ClapTrap object.
 {
     os << "ClapTrap: " << obj.getName();
     return os;

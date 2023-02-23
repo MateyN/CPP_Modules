@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:00:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/04 12:38:59 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:41:05 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void    ClapTrap:: attack(const std::string& target)
 
 void    ClapTrap:: takeDamage(unsigned int amount)
 {
-    if (this->Hit > amount)
+    if (this->Hit > static_cast<int>(amount)) // to fix compile error for different signs
         this->Hit -= amount;
     else
         this->Hit = 0;

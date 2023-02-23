@@ -6,15 +6,15 @@ SRCS = Phonebook.cpp Contact.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-CXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o : %.cpp
-	$(CXX) $(CXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CXX) $(CXFLAGS) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 clean:
 	rm -f *.o
@@ -24,3 +24,4 @@ fclean: clean
 
 re: fclean all
 
+.PHONY: all clean fclean re

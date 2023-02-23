@@ -16,15 +16,14 @@ int userInput(Contact *newMember)
 {
     std::string buff;
     std::string entries[5] = {"Enter FirstName: ",
-        "Enter LastName: ",
-        "Enter NickName: ",
-        "Enter PhoneNumber: ",
-        "Enter DarkestSecret: "};
-    int i;
+                              "Enter LastName: ",
+                              "Enter NickName: ",
+                              "Enter PhoneNumber: ",
+                              "Enter DarkestSecret: "};
+    int i = 0;
     // Declare three variables: buff -> which is used to store user input.
     // entries -> an array of five strings which contains prompts for user input,
     // i -> an integer that is used as a counter for the while loop.
-    i = 0;
     while (i < 5)
     {
         std::cout << BOLDYELLOW << entries[i] << RESET << std::endl;
@@ -33,18 +32,30 @@ int userInput(Contact *newMember)
         // Checks if the input was successful and if so, proceeds with the next step.
         {
             if (buff.size())
-            // Checks if the user input is not empty. 
+            // Checks if the user input is not empty.
             // If it's not empty, we update the corresponding attribute with the user input.
             // The i counter is then incremented. If the user input is empty, an error message is printed.
             {
-                newMember->update(buff, i);
-                i++;
+                Phonebook phonebook; // creates an istance of phonebook class to call the isDigit function.
+                if (i == 3 && phonebook.isDigit(buff)) // checks if PhoneNumber input contains only digits
+                {
+                    std::cout << BOLDRED << "Phone number should be digits only" << RESET << std::endl;
+                }
+                else
+                {
+                    newMember->update(buff, i);
+                    i++;
+                }
             }
             else
+            {
                 std::cout << BOLDRED << "Entry is empty" << RESET << std::endl;
+            }
         }
         else
+        {
             return -1;
+        }
     }
     return 0;
 }

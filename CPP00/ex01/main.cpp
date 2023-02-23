@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 13:15:10 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/22 12:49:27 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:07:28 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,36 +55,28 @@ int main()
     Phonebook book;        // create a Phonebook object "book"
     Contact newMember;     // create a Contact object "newMember"
 
-    // Print a message to the user asking for input
     std::cout << BOLDGREEN << "Please enter one of the following: ADD, SEARCH or EXIT" << RESET << std::endl;
     
-    // Keep looping until user enters "EXIT" or program is terminated
-    while (std::getline(std::cin, buff))
+    while (std::getline(std::cin, buff)) // Ctrl-D indicates EOF has been reached so getline returns false and terminate the program
     {
-        // If user enters "ADD", prompt for new contact information and add it to the phonebook
         if (!buff.compare("ADD"))
         {
             // Call a function "userInput" to prompt user for contact information and store it in "newMember"
-            if (userInput(&newMember) < 0)  // If "userInput" returns negative value, return 0 and terminate the program
+            if (userInput(&newMember) < 0) // If "userInput" returns negative value, return 0 and terminate the program
                 return 0;
-            book.addContact(newMember);     // Add "newMember" to the "book" Phonebook object
+            book.addContact(newMember); // Add "newMember" to the "book" Phonebook object
         }
-        // If user enters "SEARCH", display all contacts and prompt for an index to display
         else if (!buff.compare("SEARCH"))
         {
-            book.displayAll();                                      // Display all contacts in the phonebook
-            std::cout << BOLDCYAN << "Enter index" << RESET << std::endl; // Prompt user to enter an index
-            std::getline(std::cin, buff);                            // Store user input in "buff" variable
-            book.searchContact(buff);                               // Call function to search and display the contact at the index specified by the user
+            book.displayAll();
+            std::cout << BOLDCYAN << "Enter index" << RESET << std::endl;
+            std::getline(std::cin, buff); // Store user's input in "buff" variable
+            book.searchContact(buff); // Call function to search and display the contact at the index specified by the user
         }
-        // If user enters "EXIT", return 0 and terminate the program
         else if (!buff.compare("EXIT"))
             return 0;
-        // If user enters anything else, display an error message and prompt for input again
         else
             std::cout << BOLDRED << "Invalid entry, please try again" << RESET <<std::endl;
-
-        // Print a message to the user asking for input again
         std::cout << BOLDGREEN << "Please enter one of the following: ADD, SEARCH or EXIT" << RESET << std::endl;
     }
     return 0;

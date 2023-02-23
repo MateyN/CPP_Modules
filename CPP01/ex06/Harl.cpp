@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 10:50:36 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/27 12:02:40 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:43:20 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void    Harl:: error(void)
     return ;
 }
 
-void    Harl:: complain(std::string level)
+void Harl::complain(std::string level)
 {   
-    std::string lvls[] = {
+    std::string lvls[] = { // Define an array of levels
         "DEBUG",
         "INFO",
         "WARNING",
@@ -61,6 +61,7 @@ void    Harl:: complain(std::string level)
 
     int i = 0;
 
+    // Find the index of the given level in the levels array
     while (i < 4)
     {
         if (level == lvls[i])
@@ -68,22 +69,22 @@ void    Harl:: complain(std::string level)
         i++;
     }
     
-    switch (i)
+    switch (i) // Call the appropriate complain function based on the level using switch
     {
         case 0:
-                this->debug();
-                i++;
+            this->debug(); // If level is DEBUG, call the debug function and then move to the INFO case
+            i++;
         case 1:
-                this->info();
-                i++;
+            this->info(); // If level is INFO, call the info function and then move to the WARNING case an so on.
+            i++;
         case 2:
-                this->warning();
-                i++;
+            this->warning();
+            i++;
         case 3:
-               this->error();
-                break ;
+            this->error();  // If level is ERROR, call the error function and break out of the switch statement
+            break;
         default:
-                std::cout << YELLOW << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
+            std::cout << YELLOW << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
     }
-    return ;
+    return;
 }

@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:29:55 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/14 11:02:55 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:08:43 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void    randomChump(std::string name);
 int main(void)
 {
     std::cout << RED << "class TEST" << RESET << std::endl;
-    Zombie test("Foo");
+    Zombie test("Foo"); // stack allocation
     test.announce();
 
     std::cout << RED << "newZombie TEST" << RESET << std::endl;
-    Zombie *testNewZombie = newZombie("testNewZombie");
+    Zombie *testNewZombie = newZombie("testNewZombie"); // heap allocation
     testNewZombie->announce();
-    delete testNewZombie;
+    delete testNewZombie; // deallocated
 
     std::cout << RED << "randomChump TEST" << RESET << std::endl;
-    randomChump("testRandomChump");
+    randomChump("testRandomChump"); // stack allocation 
 
-    return 0;
+    return 0; // obj automatically destroyed by the compiler
 }

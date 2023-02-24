@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:29:49 by mnikolov          #+#    #+#             */
-/*   Updated: 2022/12/14 11:00:57 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:01:56 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class   Zombie
             void    announce(void);
 
   private:
-            std::string name;
+            std::string name; // stack allocation
 };
 
 #endif

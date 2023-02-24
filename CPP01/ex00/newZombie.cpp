@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 12:29:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/22 07:58:32 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:08:10 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ This dynamically allocated object will need to be explicitly deallocated later t
 */
 Zombie* newZombie(std::string name)
 {
-    Zombie *res = new Zombie(name);
+    Zombie *res = new Zombie(name); // heap allocation, used outside of the function scope
 
     return (res);
 }

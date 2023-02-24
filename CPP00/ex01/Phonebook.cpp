@@ -140,12 +140,10 @@ void Phonebook::addContact(Contact &newMember)
         this->i++;
     // Check if the number of contacts in the phone book is less than 8, and increment the count if it is.
     if (this->pos > 7)
-        this->pos = 7;
+        this->pos = 0;
     // Check if the current position in the phone book array is greater than 7 (which means it has reached the end of the array), and reset it to 0 if it is.
     this->list[this->pos] = newMember;
     // Add the new contact to the current position in the phone book array.
     this->pos++;
-    if (this->pos > 7) // checks if we reached the last slot if we do we will change the last index if new contact is added.
-        this->pos = 7;
     return;
 }

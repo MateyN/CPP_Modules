@@ -6,14 +6,14 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/23 10:19:58 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:31:47 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanB.hpp"
 
-HumanB:: HumanB(std::string _name) : weapon(NULL), name(_name)
+HumanB:: HumanB(std::string _name, Weapon *weapon) : weapon(weapon), name(_name)
 {
     std::cout << GREEN << "HumanB constructor is called" << RESET << std::endl;
     return ;

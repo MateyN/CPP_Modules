@@ -6,13 +6,16 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/24 10:31:47 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 11:04:05 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanB.hpp"
-
+/*
+Pointer to Weapon object is used,
+which is NULL to indicate that the HumanB object does not have a Weapon
+*/
 HumanB:: HumanB(std::string _name, Weapon *weapon) : weapon(weapon), name(_name)
 {
     std::cout << GREEN << "HumanB constructor is called" << RESET << std::endl;

@@ -6,20 +6,16 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:39 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/22 08:15:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:58:45 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 #include "HumanA.hpp"
-/*
-Using a reference in this case ensures that the Weapon object is always valid
-and ready to be used by the HumanA object.
-*/
+
+// Weapon attribute is initialized with the address of the Weapon reference passed to the constructor.
 HumanA:: HumanA(std::string name, Weapon &weapon) : name(name), weapon(&weapon)
 {
-    // a reference is used to pass the Weapon object into the HumanA constructor,
-    // but a pointer is used to store it as a member variable
     std::cout << GREEN << "HumanA constructor is called" << RESET << std::endl;
     return ;
 }

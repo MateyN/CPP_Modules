@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 11:19:54 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/24 10:28:08 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:55:33 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 #include <iostream>
 #include <string>
 
+/*
+Pointer to Weapon object is used,
+which is NULL to indicate that the HumanB object does not have a Weapon
+*/
 class   HumanB
 {
     public:

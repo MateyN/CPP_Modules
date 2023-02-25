@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 10:50:36 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/22 08:38:19 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:09:28 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,26 @@ void    Harl:: error(void)
 }
 void Harl::complain(std::string level)
 {
-    typedef void (Harl::*fptr)(void); // Define a function pointer type that takes no arguments and returns void
+    typedef void (Harl::*fptr)(void); // fptr is defined as a pointer to a member function of the Harl class that takes no arguments and returns void. 
 
-    std::string lvls[4] = { // Define an array of strings representing log levels
+    std::string lvls[4] = { // defines an array of std::string objects named lvls. 
+                            // The array contains four strings, each representing a log level.
         "DEBUG",
         "INFO",
         "WARNING",
         "ERROR"
     };
-
-    fptr complains[4] = { // Define an array of function pointers that correspond to each log level
-        &Harl::debug,
-        &Harl::info,
-        &Harl::warning,
-        &Harl::error
+        // Array of function pointers. 
+        // Each element of the array points to a member function of the Harl class that corresponds to a log level.
+    fptr complains[4] = {
+        &Harl::debug,   // complains[0]
+        &Harl::info,    // complains[1]
+        &Harl::warning, // complains[2]
+        &Harl::error    // complains[3]
     };
     
     int i = 0;
+    // iterate through the lvls array, comparing each string to the level argument passed to the complain method
     while (i < 4)
     {
         if (lvls[i] == level) // If the log level matches the specified level, call the corresponding log function

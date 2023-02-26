@@ -14,7 +14,7 @@
 
 ScavTrap:: ScavTrap(void)
 {
-    std::cout << YELLOW << this->Name << " constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
+    std::cout << YELLOW << this->Name << "Constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = "";
     this->Hit = 100;
     this->Energy = 50;
@@ -24,7 +24,7 @@ ScavTrap:: ScavTrap(void)
 
 ScavTrap:: ScavTrap(std::string str)
 {
-    std::cout << YELLOW << this->Name << " ScavTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
+    std::cout << YELLOW << this->Name << "ScavTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = str;
     this->Hit = 100;
     this->Energy = 50;

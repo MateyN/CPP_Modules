@@ -24,7 +24,7 @@ ClapTrap:: ClapTrap(void)
 
 ClapTrap:: ClapTrap(std::string str)
 {
-    std::cout << YELLOW << this->Name << " ClapTrap constructor is called with 10 HIT pts and 10 NRG pts" << RESET << std::endl;
+    std::cout << YELLOW << this->Name << "ClapTrap constructor is called with 10 HIT pts and 10 NRG pts" << RESET << std::endl;
     this->Name = str;
     this->Hit = 10;
     this->Energy = 10;
@@ -50,7 +50,7 @@ ClapTrap & ClapTrap:: operator=(ClapTrap const &obj)
 
 ClapTrap:: ~ClapTrap(void)
 {
-    std::cout << RED << this->Name << " ClapTrap destructor is called" << RESET << std::endl;
+    std::cout << RED << this->Name << "ClapTrap destructor is called" << RESET << std::endl;
     return ;
 }
 
@@ -101,19 +101,29 @@ void    ClapTrap:: takeDamage(unsigned int amount)
     return ;
 }
 
-void    ClapTrap:: beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->Energy > 0 && this->Hit > 0)
+    // Check if the ClapTrap has enough energy and hit points to be repaired
+    if (this->Energy != 0 && this->Hit != 0)
     {
-        this->Hit += amount;
-        this->Energy--;
-    		std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
-            this->Hit << " hit points left." << std::endl <<
-            this->Name << " used 1 NRG point to repair and now has " << this->Energy << " NRG points left." << RESET << std::endl;
-	}
-	else
-		std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
-    return ;
+        this->Hit += amount; // Increase the ClapTrap's hit points by the given amount
+        std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
+            this->Hit << " hit points left." << std::endl;
+        if (this->Energy > 0)
+        {
+            --this->Energy;
+        std::cout << this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        }
+        else
+        {
+            std::cout << this->Name << " doesn't have any energy left." << RESET << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
+    }
+    return;
 }
 
 std::ostream &operator<<(std::ostream& os, ClapTrap const &obj)

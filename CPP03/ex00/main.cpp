@@ -12,21 +12,55 @@
 
 #include "ClapTrap.hpp"
 
-int main(void)
+int main()
 {
-    ClapTrap claptrap1("Claptrap 1");
-    ClapTrap claptrap2("Claptrap 2");
+    std::cout << "Creating a ClapTrap object named Zombie" << std::endl;
+    ClapTrap Zombie("Zombie");
 
-    claptrap1.attack("target 1");
-    claptrap1.beRepaired(3);
-    claptrap1.attack("target 1");
-    claptrap2.takeDamage(5);
-    claptrap2.attack("target 2");
-    claptrap2.attack("target 2");
-    claptrap1.takeDamage(12);
-    claptrap1.beRepaired(10);
-    claptrap1.attack("target 1");
-    claptrap2.attack("target 2");
+    std::cout << "Creating a ClapTrap object named Mutant..." << std::endl;
+    ClapTrap Mutant("Mutant");
+
+    std::cout << "Attacking Mutant with Bob..." << std::endl;
+    Zombie.attack("Mutant");
+
+    std::cout << "Repairing Zombie..." << std::endl;
+    Zombie.beRepaired(5);
+
+    std::cout << "Attacking Mutant with Zombie again..." << std::endl;
+    Zombie.attack("Mutant");
+
+    std::cout << "Mutant takes damage..." << std::endl;
+    Mutant.takeDamage(3);
+
+    std::cout << "Mutant takes more damage..." << std::endl;
+    Mutant.takeDamage(8);
+
+    std::cout << "Zombie is destroyed..." << std::endl;
+    Zombie.takeDamage(10);
+
+    std::cout << "Creating a new ClapTrap object named Xman..." << std::endl;
+    ClapTrap Xman("Xman");
+
+    std::cout << "Copying Mutant into Xman..." << std::endl;
+    Xman = Mutant;
+
+    std::cout << "Mutant and Xman are destroyed..." << std::endl;
+
+    std::cout << "Trying to attack with Zombie..." << std::endl;
+    Zombie.attack("Mutant");
+
+    std::cout << "Trying to repair Zombie with not enough hit points and energy..." << std::endl;
+    Zombie.takeDamage(8);
+    Zombie.beRepaired(10);
+
+    std::cout << "Trying to attack with Zombie with not enough hit points..." << std::endl;
+    Zombie.beRepaired(5);
+    Zombie.takeDamage(10);
+    Zombie.attack("Mutant");
+
+    std::cout << "Trying to attack with Zombie with no energy..." << std::endl;
+    Zombie.takeDamage(5);
+    Zombie.attack("Mutant");
 
     return 0;
 }

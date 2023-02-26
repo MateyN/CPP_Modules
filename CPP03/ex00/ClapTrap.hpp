@@ -39,7 +39,7 @@ class ClapTrap
             int         getHit(void) const;
             int         getEnergy(void) const;
             int         getAttackDamage(void) const;
-            
+
     private:
             std::string Name;
             int         Hit;

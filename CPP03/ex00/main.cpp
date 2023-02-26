@@ -12,52 +12,21 @@
 
 #include "ClapTrap.hpp"
 
-int main(void) 
+int main(void)
 {
-	ClapTrap	test("toto");
-	std::cout << std::endl;
-	
-	test.takeDamage(6);
-	std::cout << std::endl;
-	
-	test.beRepaired(3);
-	std::cout << std::endl;
-	
-	test.attack("tata");
-	std::cout << std::endl;
-	
-	test.takeDamage(8);
-	std::cout << std::endl;
-	
-	test.attack("foo");
-	std::cout << std::endl;
+    ClapTrap claptrap1("Claptrap 1");
+    ClapTrap claptrap2("Claptrap 2");
 
-	test.beRepaired(2);
-	std::cout << std::endl;
+    claptrap1.attack("target 1");
+    claptrap1.beRepaired(3);
+    claptrap1.attack("target 1");
+    claptrap2.takeDamage(5);
+    claptrap2.attack("target 2");
+    claptrap2.attack("target 2");
+    claptrap1.takeDamage(12);
+    claptrap1.beRepaired(10);
+    claptrap1.attack("target 1");
+    claptrap2.attack("target 2");
 
-	// Testing copy constructor
-	ClapTrap	test2(test);
-
-	test2.attack("tata");
-	std::cout << std::endl;
-
-	test2.takeDamage(6);
-	std::cout << std::endl;
-
-	test2.beRepaired(3);
-	std::cout << std::endl;
-
-	test2.attack("foo");
-	std::cout << std::endl;
-
-	test2.takeDamage(8);
-	std::cout << std::endl;
-
-	test2.attack("42");
-	std::cout << std::endl;
-
-	test2.beRepaired(2);
-	std::cout << std::endl;
-
-	return 0;
+    return 0;
 }

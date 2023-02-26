@@ -112,10 +112,17 @@ void ClapTrap::beRepaired(unsigned int amount)
     if (this->Energy != 0 && this->Hit != 0)
     {
         this->Hit += amount; // Increase the ClapTrap's hit points by the given amount
-        --this->Energy; // Decrease the ClapTrap's energy by 1 
         std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
-            this->Hit << " hit points left." << std::endl <<
-            this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+            this->Hit << " hit points left." << std::endl;
+        if (this->Energy > 0)
+        {
+            --this->Energy;
+        std::cout << this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        }
+        else
+        {
+            std::cout << this->Name << " doesn't have any energy left." << RESET << std::endl;
+        }
     }
     else
     {

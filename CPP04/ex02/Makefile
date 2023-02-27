@@ -2,7 +2,7 @@ NAME	=	Polymorphism2
 
 CXX		=	c++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 SRCS	=	main.cpp Animal.cpp Brain.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 

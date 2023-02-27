@@ -6,80 +6,93 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:01:39 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/26 14:17:30 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 01:29:33 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
-
+/*
+A derived class should be able to call methods and use data members of its base class.
+On the other hand, a base class does not normally call methods or use members of its derived class
+(generally, it doesn't know which derived class it's a part of).
+For this reason, base class is constructed first and destroyed last,
+so that it's valid while the constructor and destructor of its derived classes runs.
+*/
 int main()
 {
+        // Create a ClapTrap object named Zombie. This will call the default constructor of ClapTrap.
     std::cout << "Creating a ClapTrap object named Zombie..." << std::endl;
     ClapTrap Zombie("Zombie");
 
+        // Create a ClapTrap object named Mutant. This will call the default constructor of ClapTrap.
     std::cout << "Creating a ClapTrap object named Mutant..." << std::endl;
     ClapTrap Mutant("Mutant");
 
+        // Zombie attacks Mutant, which reduces Mutant's hit points.
     std::cout << "Attacking Mutant with Zombie..." << std::endl;
     Zombie.attack("Mutant");
 
+        // Zombie is repaired, which increases his hit points.
     std::cout << "Repairing Zombie..." << std::endl;
     Zombie.beRepaired(5);
 
+        // Zombie attacks Mutant again, which reduces Mutant's hit points further.
     std::cout << "Attacking Mutant with Zombie again..." << std::endl;
     Zombie.attack("Alice");
 
+        // Mutant takes damage, which reduces his hit points.
     std::cout << "Mutant takes damage..." << std::endl;
     Mutant.takeDamage(3);
 
+        // Mutant takes more damage, which reduces his hit points more.
     std::cout << "Mutant takes more damage..." << std::endl;
     Mutant.takeDamage(8);
 
+        // Zombie is destroyed, which reduces his hit points to 0.
     std::cout << "Zombie is destroyed..." << std::endl;
     Zombie.takeDamage(10);
 
+        // Create a ClapTrap object named Xman. This will call the default constructor of ClapTrap.
     std::cout << "Creating a new ClapTrap object named Xman..." << std::endl;
     ClapTrap Xman("Xman");
 
-    std::cout << "Copying Mutant into Xman..." << std::endl;
-    Xman = Mutant;
-
-    std::cout << "Mutant and Xman are destroyed..." << std::endl;
-
     std::cout << std::endl;
-
+    
+        // Create a ScavTrap object named SuperMan. This will call the default constructor of ScavTrap.
     std::cout << "Creating a ScavTrap object named SuperMan..." << std::endl;
     ScavTrap SuperMan("SuperMan");
 
+        // Create a ScavTrap object named TheKeeper. This will call the default constructor of ScavTrap.
     std::cout << "Creating a ScavTrap object named TheKeeper..." << std::endl;
     ScavTrap TheKeeper("TheKeeper");
 
+        // SuperMan attacks TheKeeper, which reduces TheKeeper's hit points.
     std::cout << "Attacking TheKeeper with SuperMan..." << std::endl;
     SuperMan.attack("TheKeeper");
 
+        // TheKeeper guards the gate.
     std::cout << "Guarding the gate with TheKeeper..." << std::endl;
     TheKeeper.guardGate();
 
+        // SuperMan attacks TheKeeper again, which reduces hit points more
     std::cout << "Attacking TheKeeper with SuperMan again..." << std::endl;
     SuperMan.attack("TheKeeper");
 
+        // TheKeeper takes damage, which reduces his hit points.
     std::cout << "TheKeeper takes damage..." << std::endl;
     TheKeeper.takeDamage(3);
 
+        // TheKeeper takes more damage, which reduces his hit points more.
     std::cout << "TheKeeper takes more damage..." << std::endl;
     TheKeeper.takeDamage(8);
 
+        // Zombie is destroyed, which reduces his hit points to 0.
     std::cout << "SuperMan is destroyed..." << std::endl;
     SuperMan.takeDamage(10);
 
-    std::cout << "Creating a new ScavTrap object named Unknown..." << std::endl;
-    ScavTrap Unknown("Unknown");
-
-    std::cout << "Copying TheKeeper into Unknown..." << std::endl;
-    Unknown = TheKeeper;
-
-    std::cout << "TheKeeper and Unknown are destroyed..." << std::endl;
+        // TheKeeper is destroyed, which reduces his hit points to 0.
+    std::cout << "TheKeeper is destroyed..." << std::endl;
 
     return 0;
 }

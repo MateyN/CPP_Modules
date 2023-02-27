@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:47:26 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/04 10:59:45 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:42:54 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,5 @@ class ScavTrap: public ClapTrap
 
             void attack(const std::string& target);
             void guardGate(void);
-
 };
 #endif

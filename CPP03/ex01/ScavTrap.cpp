@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:47:33 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/27 02:14:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:06:32 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void    ScavTrap:: attack(const std::string& target)
         std::cout << GREEN << "ScavTrap " << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
     else if (this->Energy == 0)
-		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has no energy points left." << std::endl;
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has no energy points left." << RESET << std::endl;
 	else
-		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has not enough hit points." << std::endl;
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has not enough hit points." << RESET << std::endl;
 }
 
 void    ScavTrap:: guardGate(void)

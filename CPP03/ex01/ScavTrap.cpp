@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:47:33 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/27 01:19:51 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 02:14:17 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ScavTrap:: ScavTrap(void) : ClapTrap()
 {
-    std::cout << YELLOW << this->Name << "Constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
+    std::cout << YELLOW << this->Name << "Constructor is called." << RESET << std::endl;
     //this->Name = "";
     this->Hit = 100;
     this->Energy = 50;
@@ -59,20 +59,20 @@ void    ScavTrap:: attack(const std::string& target)
     if (this->Energy > 0 && this->Hit > 0)
     {
         //ScavTrap instance(target);
-        std::cout << GREEN << this->Name << " attacks " << target <<
+        std::cout << GREEN  << "ScavTrap " << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
         //instance.takeDamage(attackDamage);
         this->Energy--;
-        std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        std::cout << GREEN << "ScavTrap " << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
     else if (this->Energy == 0)
-		std::cout << this->Name << " is not able to attack " << target << ", because he has no energy points left." << std::endl;
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has no energy points left." << std::endl;
 	else
-		std::cout << this->Name << " is not able to attack " << target << ", because he has not enough hit points." << std::endl;
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has not enough hit points." << std::endl;
 }
 
 void    ScavTrap:: guardGate(void)
 {
-    std::cout << BLUE << this->Name << " is now in Gate keeper mode." << RESET << std::endl;
+    std::cout << BLUE << "ScavTrap " << this->Name << " is now in Gate keeper mode." << RESET << std::endl;
     return ;
 }

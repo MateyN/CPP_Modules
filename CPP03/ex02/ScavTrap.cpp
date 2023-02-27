@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:47:33 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/27 10:08:36 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:28:52 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ void    ScavTrap:: attack(const std::string& target)
     if (this->Energy > 0 && this->Hit > 0)
     {
         //ScavTrap instance(target);
-        std::cout << GREEN << this->Name << " attacks " << target <<
+        std::cout << GREEN  << "ScavTrap " << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
         //instance.takeDamage(attackDamage);
         this->Energy--;
-        std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        std::cout << GREEN << "ScavTrap " << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
-    else
-        std::cout << GREEN << this->Name << " doesn't have enough hit pts to attack" << RESET << std::endl;
-    return ;
+    else if (this->Energy == 0)
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has no energy points left." << RESET << std::endl;
+	else
+		std::cout << GREEN << "ScavTrap " << this->Name << " is not able to attack " << target << ", because he has not enough hit points." << RESET << std::endl;
 }
 
 void    ScavTrap:: guardGate(void)

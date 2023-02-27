@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:00:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/27 02:12:22 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:30:31 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void    ClapTrap:: takeDamage(unsigned int amount)
         this->Hit = 0;
         std::cout << GREEN  << "ClapTrap " << this->Name << " has taken damage of " << amount <<
         " points and now has: " << this->Hit << " hit points left" << RESET << std::endl;
-        
         return ;
 }
 

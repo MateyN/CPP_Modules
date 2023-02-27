@@ -6,13 +6,13 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 12:45:30 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/04 13:09:44 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:05:14 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap:: FragTrap(void)
+FragTrap:: FragTrap(void) : ClapTrap()
 {
     std::cout << YELLOW << this->Name << " FragTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = "";
@@ -22,7 +22,7 @@ FragTrap:: FragTrap(void)
     return ;
 }
 
-FragTrap:: FragTrap(std::string str)
+FragTrap:: FragTrap(std::string str) : ClapTrap(str)
 {
     std::cout << YELLOW << this->Name << " FragTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = str;
@@ -32,7 +32,7 @@ FragTrap:: FragTrap(std::string str)
     return ;
 }
 
-FragTrap:: FragTrap(FragTrap const &obj)
+FragTrap:: FragTrap(FragTrap const &obj) : ClapTrap(obj)
 {
     std::cout << YELLOW << "FragTrap copy constructor is called" << RESET << std::endl;
     *this = obj;

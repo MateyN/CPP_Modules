@@ -6,13 +6,13 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:47:33 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/04 13:06:49 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:08:36 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap:: ScavTrap(void)
+ScavTrap:: ScavTrap(void) : ClapTrap()
 {
     std::cout << YELLOW << this->Name << " ScavTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = "";
@@ -22,7 +22,7 @@ ScavTrap:: ScavTrap(void)
     return ;
 }
 
-ScavTrap:: ScavTrap(std::string str)
+ScavTrap:: ScavTrap(std::string str) : ClapTrap(str)
 {
     std::cout << YELLOW << this->Name << " ScavTrap constructor is called with 100 HIT points and 50 NRG points" << RESET << std::endl;
     this->Name = str;
@@ -32,7 +32,7 @@ ScavTrap:: ScavTrap(std::string str)
     return ;
 }
 
-ScavTrap:: ScavTrap(ScavTrap const &obj)
+ScavTrap:: ScavTrap(ScavTrap const &obj) : ClapTrap(obj)
 {
     std::cout << YELLOW << " ScavTrap copy constructor is called" << RESET << std::endl;
     *this = obj;
@@ -58,15 +58,15 @@ void    ScavTrap:: attack(const std::string& target)
 {
     if (this->Energy > 0 && this->Hit > 0)
     {
-        ScavTrap instance(target);
+        //ScavTrap instance(target);
         std::cout << GREEN << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
-        instance.takeDamage(attackDamage);
+        //instance.takeDamage(attackDamage);
         this->Energy--;
         std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
     else
-        std::cout << this->Name << " doesn't have enough hit pts to attack" << std::endl;
+        std::cout << GREEN << this->Name << " doesn't have enough hit pts to attack" << RESET << std::endl;
     return ;
 }
 

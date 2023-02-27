@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:00:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/23 10:41:05 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:06:07 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ void    ClapTrap:: attack(const std::string& target)
 {
     if (this->Energy > 0 && this->Hit > 0)
     {
-        ClapTrap instance(target);
+        //ClapTrap instance(target);
         std::cout << GREEN << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
-        instance.takeDamage(attackDamage);
+        //instance.takeDamage(attackDamage);
         this->Energy--;
         std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
@@ -101,19 +101,29 @@ void    ClapTrap:: takeDamage(unsigned int amount)
     return ;
 }
 
-void    ClapTrap:: beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
-    if (this->Energy > 0 && this->Hit > 0)
+    // Check if the ClapTrap has enough energy and hit points to be repaired
+    if (this->Energy != 0 && this->Hit != 0)
     {
-        this->Hit += amount;
-        this->Energy--;
-    		std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
-            this->Hit << " hit points left." << std::endl <<
-            this->Name << " used 1 NRG point to repair and now has " << this->Energy << " NRG points left." << RESET << std::endl;
-	}
-	else
-		std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
-    return ;
+        this->Hit += amount; // Increase the ClapTrap's hit points by the given amount
+        std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
+            this->Hit << " hit points left." << RESET << std::endl;
+        if (this->Energy > 0)
+        {
+            --this->Energy;
+        std::cout << GREEN << this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        }
+        else
+        {
+            std::cout << GREEN << this->Name << " doesn't have any energy left." << RESET << std::endl;
+        }
+    }
+    else
+    {
+        std::cout << GREEN << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << RESET << std::endl;
+    }
+    return;
 }
 
 std::ostream &operator<<(std::ostream& os, ClapTrap const &obj)

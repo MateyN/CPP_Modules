@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:30:08 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/09 09:59:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:41:40 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,35 @@
 #include "WrongCat.hpp"
 #include "Animal.hpp"
 
-void displayMessage(Animal obj)
-{
-    std::cout << "Type: " << obj.getType() << std::endl;
-    obj.makeSound();
-}
-
 int main()
 {
-	{
-        Animal  obj1;
-		displayMessage(obj1);
-		Dog obj2;
-		displayMessage(obj2);
-		Cat obj3;
-		displayMessage(obj3);
-	}
-    std::cout << std::endl;
-    {
-		const Animal* meta = new Animal();
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
-		std::cout << "Type: " << meta->getType() << std::endl;
-		std::cout << "Type: " << j->getType() << std::endl;
-		std::cout << "Type: " << i->getType() << std::endl;
-		meta->makeSound();
-		i->makeSound(); //will output the cat sound!
-		j->makeSound();
-		delete meta;
-		delete i;
-		delete j;
-	}
+	std::cout << "Tests for Animal, Dog and Cat" << std::endl;
 	std::cout << std::endl;
-	{
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* i = new WrongCat();
-		const WrongCat* j = new WrongCat();
-		std::cout << "Type: " << meta->getType() << std::endl;
-		std::cout << "Type: " << j->getType() << std::endl;
-		std::cout << "Type: " << i->getType() << std::endl;
-		meta->makeSound();
-		i->makeSound();
-		j->makeSound();
-		delete meta;
-		delete i;
-		delete j;
-	}
-	return 0;
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
+    
+    i->makeSound(); //will output the cat sound!
+    j->makeSound(); //will output the dog sound!
+    meta->makeSound();
+
+    delete i;
+    delete j;
+    delete meta;
+
+	std::cout << "Tests for WrongAnimal and WrongCat" << std::endl;
+	std::cout << std::endl;
+
+	const WrongAnimal* wa = new WrongAnimal();
+	const WrongAnimal* wc = new WrongCat();
+	std::cout << wc->getType() << " " << std::endl;
+	wc->makeSound(); // will output the wrongcat sound!
+	wa->makeSound(); // will output the wronganimal sound!
+
+	delete wa;
+	delete wc;
+    return 0;
 }

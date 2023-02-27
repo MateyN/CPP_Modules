@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 13:29:47 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/06 10:36:44 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:12:14 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Animal:: ~Animal(void)
 
 void    Animal:: makeSound(void) const
 {
-    std::cout << BLUE << "Animal sound!" << RESET << std::endl;
+    std::cout << BLUE << "Animal makes no sound" << RESET << std::endl;
 }
 
 std::string Animal:: getType(void) const

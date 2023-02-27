@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 12:47:29 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/23 10:38:41 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:18:59 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,61 +74,47 @@ int ClapTrap:: getAttackDamage(void) const
     return this->attackDamage;
 }
 
-void ClapTrap::attack(const std::string& target)
+void    ClapTrap:: attack(const std::string& target)
 {
-    // Check if the ClapTrap has enough Energy and Hit points to attack
     if (this->Energy > 0 && this->Hit > 0)
     {
-        // Create a new ClapTrap instance to attack the target
-        ClapTrap instance(target);
-        std::cout << GREEN << this->Name << " attacks " << target <<
+        std::cout << GREEN << "ClapTrap " << this->Name << " attacks " << target <<
         ", causing " << this->attackDamage << " points of damage!" << RESET << std::endl;
-        instance.takeDamage(attackDamage); // Call the 'takeDamage' method of the new ClapTrap instance to deduct the damage caused
-        this->Energy--; // Deduct 1 point of Energy from the attacking ClapTrap instance
-        std::cout << GREEN << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
+        this->Energy--;
+        std::cout << GREEN  << "ClapTrap " << this->Name << " used 1 NRG pt and now has " << this->Energy << " NRG points left." << RESET << std::endl;
     }
-    // If the ClapTrap doesn't have enough Energy or Hit points to attack, print a message indicating so
     else
-        std::cout << this->Name << " doesn't have enough hit pts to attack" << std::endl;
+        std::cout << GREEN << "ClapTrap " << this->Name << " doesn't have enough hit pts to attack" << RESET << std::endl;
     return ;
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
+void    ClapTrap:: takeDamage(unsigned int amount)
 {
-    // If the amount of damage received is less than or equal to the current hit points,
-    // subtract the damage from the current hit points. Otherwise, set hit points to 0.
     if (this->Hit > static_cast<int>(amount)) // to fix compile error for different signs
         this->Hit -= amount;
-    else
+   else
         this->Hit = 0;
-    std::cout << GREEN << this->Name << " has taken damage of " << amount <<
+        std::cout << GREEN  << "ClapTrap " << this->Name << " has taken damage of " << amount <<
         " points and now has: " << this->Hit << " hit points left" << RESET << std::endl;
-    return;
+        
+        return ;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
     // Check if the ClapTrap has enough energy and hit points to be repaired
-    if (this->Energy != 0 && this->Hit != 0)
-    {
-        this->Hit += amount; // Increase the ClapTrap's hit points by the given amount
-        std::cout << GREEN << this->Name << " has been repaired with " << amount << " points and now has " <<
-            this->Hit << " hit points left." << std::endl;
-        if (this->Energy > 0)
-        {
-            --this->Energy;
-        std::cout << this->Name << " used 1 NRG point and now has " << this->Energy << " NRG points left." << RESET << std::endl;
-        }
-        else
-        {
-            std::cout << this->Name << " doesn't have any energy left." << RESET << std::endl;
-        }
-    }
-    else
-    {
-        std::cout << "Sorry, " << this->Name << " doesn't have enough hit points or energy to be repaired." << std::endl;
-    }
-    return;
+        if (this->Energy > 0 && this->Hit > 0 && this->Hit + static_cast<int>(amount) <= 10)
+	{
+		this->Hit += amount;
+		std::cout << "ClapTrap " << this->Name << " repaired itself and gained " << amount << " of hit points, he now has " << this->Hit << "hit points." << std::endl;
+		this->Energy--;
+	}
+	else if (this->Energy == 0)
+		std::cout << "ClapTrap " << this->Name << " is not able to repair itself, because he doesn't have enough energy points." << std::endl;
+	else if (this->Hit == 0)
+		std::cout << "ClapTrap " << this->Name << " is not able to repair itself, because he doesn't have enough hit points." << std::endl;
+	else
+		std::cout << "ClapTrap " << this->Name << " can't be repaired to have more than 10 hit points." << std::endl;
 }
 
 // This operator<< overload function for the ClapTrap class enables an object of ClapTrap to be printed to an output stream.

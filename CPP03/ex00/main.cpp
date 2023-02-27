@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 12:47:37 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/04 10:40:49 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:16:23 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
     std::cout << "Creating a ClapTrap object named Mutant..." << std::endl;
     ClapTrap Mutant("Mutant");
 
-    std::cout << "Attacking Mutant with Bob..." << std::endl;
+    std::cout << "Attacking Mutant with Zombie..." << std::endl;
     Zombie.attack("Mutant");
 
     std::cout << "Repairing Zombie..." << std::endl;

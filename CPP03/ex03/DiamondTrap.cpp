@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:31:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/28 13:05:12 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:13:15 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,45 @@
 //#include "ClapTrap.hpp"
 //#include <iostream>
 
-DiamondTrap:: DiamondTrap(void) : ClapTrap("test")
+DiamondTrap:: DiamondTrap(void) : ClapTrap()
 {
-    this->Name = "test";
+    std::cout << YELLOW << " Default DiamondTrap constructor is called." << RESET << std::endl;
+    this->Name = "";
     this->Hit = FragTrap::Hit;
     this->Energy = ScavTrap::Energy;
     this->attackDamage = FragTrap::attackDamage;
-    std::cout << YELLOW << " Default DiamondTrap constructor is called." << RESET << std::endl;
 }
 
-DiamondTrap:: DiamondTrap(DiamondTrap const &obj) : ClapTrap(obj), ScavTrap(obj), FragTrap(obj)
+DiamondTrap:: DiamondTrap(std::string name) : ClapTrap(name)
+{
+    std::cout << YELLOW << this->Name << " DiamondTrap constructor called." << RESET << std::endl;
+    this->Name = name;
+    ClapTrap::Name = name + "_clap_name";
+    this->Hit = FragTrap::Hit;
+    this->Energy = ScavTrap::Energy;
+    this->attackDamage = FragTrap::attackDamage;
+}
+
+DiamondTrap:: DiamondTrap(DiamondTrap const &obj) : ClapTrap(obj)
 {
     std::cout << YELLOW << "DiamondTrap copy constructor is called" << RESET << std::endl;
     *this = obj;
 }
 
-DiamondTrap:: DiamondTrap(std::string name) : ClapTrap(name + "_clap_name")
+DiamondTrap & DiamondTrap:: operator=(DiamondTrap const &obj)
 {
-    this->Name = name;
-    this->Hit = FragTrap::Hit;
-    this->Energy = ScavTrap::Energy;
-    this->attackDamage = FragTrap::attackDamage;
-    std::cout << YELLOW << this->Name << " DiamondTrap constructor " << RESET << std::endl;
+    std::cout << YELLOW << "DiamondTrap Copy assignment operator called" << RESET << std::endl;
+    this->Name = obj.Name;
+    this->Hit = obj.Hit;
+    this->Energy = obj.Energy;
+    this->attackDamage = obj.attackDamage;
+    return (*this);
 }
 
 DiamondTrap:: ~DiamondTrap(void)
 {
     std::cout << RED << this->Name << " DiamondTrap destructor is called" << RESET << std::endl;
     return ;
-}
-
-DiamondTrap & DiamondTrap:: operator=(DiamondTrap const &obj)
-{
-    std::cout << YELLOW << "DiamondTrap Copy assignment operator called" << RESET << std::endl;
-    this->Name = obj.Name + "_clap_name";
-    this->Hit = obj.Hit;
-    this->Energy = obj.Energy;
-    this->attackDamage = obj.attackDamage;
-    return (*this);
 }
 
 void    DiamondTrap::attack(const std::string &target)

@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:01:39 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/28 12:06:55 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:17:17 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main()
 
         // Zombie attacks Mutant again, which reduces Mutant's hit points further.
     std::cout << "Attacking Mutant with Zombie again..." << std::endl;
-    Zombie.attack("Alice");
+    Zombie.attack("Mutant");
 
         // Mutant takes damage, which reduces his hit points.
     std::cout << "Mutant takes damage..." << std::endl;
@@ -120,9 +120,13 @@ int main()
     FragTrap2.takeDamage(10);
 
     std::cout << "Creating a DiamondTrap object named DiamondTrap1..." << std::endl;
-    DiamondTrap DiamondTrap1("DiamondTrap1");
+    DiamondTrap DiamondTrap1("DT1");
+    DiamondTrap DiamondTrap2("DT2");
 
     DiamondTrap1.whoAmI();
+    DiamondTrap1.attack("DT2");
+    DiamondTrap2.whoAmI();
+    DiamondTrap2.attack("DT1");
 
     return 0;
 }

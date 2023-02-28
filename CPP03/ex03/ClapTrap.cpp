@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:00:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/28 12:44:41 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:53:47 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ ClapTrap & ClapTrap:: operator=(ClapTrap const &obj)
     this->attackDamage = obj.attackDamage;
     return (*this);
 }
-
 
 void    ClapTrap:: attack(const std::string& target)
 {

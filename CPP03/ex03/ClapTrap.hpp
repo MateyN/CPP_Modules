@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 11:01:20 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/28 12:52:02 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:53:12 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ class ClapTrap
             void attack(const std::string &target);
             void takeDamage(unsigned int amount);
             void beRepaired(unsigned int amount);
-
-            //std::string getName(void) const;
-            //int         getHit(void) const;
-            //int         getEnergy(void) const;
-            //int         getAttackDamage(void) const;
 
     protected:
             std::string Name;

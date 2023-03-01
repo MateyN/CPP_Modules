@@ -6,19 +6,19 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:40:37 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/17 11:30:41 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 23:25:52 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm:: ShrubberyCreationForm(void) : _target("Unknown"), _signed(false), _gradeToSign(145), _gradeToExec(137)
+ShrubberyCreationForm:: ShrubberyCreationForm(void) : _target("Unknown"), _gradeToSign(145), _gradeToExec(137), _signed(false)
 {
     std::cout << GREEN << "ShrubberyCreationForm constructor called without any target" << RESET << std::endl;
     throw std::string ("Error: ShrubberyCreationForm cannot be instantiated without a target!");
 }
 
-ShrubberyCreationForm:: ShrubberyCreationForm(std::string target) : _target(target), _signed(false), _gradeToSign(145), _gradeToExec(137)
+ShrubberyCreationForm:: ShrubberyCreationForm(std::string target) : _target(target), _gradeToSign(145), _gradeToExec(137), _signed(false)
 {
     std::cout << BLUE << "ShrubberyCreationForm constructor called" << RESET << std::endl; 
 }

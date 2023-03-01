@@ -6,19 +6,19 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:40:31 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/20 11:02:36 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 23:28:33 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm:: RobotomyRequestForm(void) : _target(NULL), _signed(false), _gradeToSign(72), _gradeToExec(45)
+RobotomyRequestForm:: RobotomyRequestForm(void) : _target(NULL), _gradeToSign(72), _gradeToExec(45), _signed(false)
 {
     std::cout << GREEN << "RobotomyRequestForm constructor called without any target" << RESET << std::endl;
     throw std::string ("Error: RobotomyRequestForm cannot be instantiated without a target!");
 }
 
-RobotomyRequestForm:: RobotomyRequestForm(std::string target) : _target(target), _signed(false), _gradeToSign(72), _gradeToExec(45)
+RobotomyRequestForm:: RobotomyRequestForm(std::string target) : _target(target), _gradeToSign(72), _gradeToExec(45), _signed(false)
 {
     std::cout << BLUE << "RobotomyRequestForm constructor called with target " << _target << RESET << std::endl; 
 }

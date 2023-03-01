@@ -6,18 +6,18 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:18:51 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/18 13:16:07 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:04:07 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form:: Form(void) : _name("Unknown"), _signed(false), _gradeToSign(0), _gradeToExec(0)
+Form:: Form(void) : _name("Unknown"), _gradeToSign(0), _gradeToExec(0), _signed(false)
 {
     std::cout << GREEN << "Form constructor called without name or grade" << RESET << std::endl;
 }
 
-Form:: Form(std::string name, int gradeSign, int gradeExec) : _name(name), _signed(false), _gradeToSign(gradeSign), _gradeToExec(gradeExec)
+Form:: Form(std::string name, int gradeSign, int gradeExec) : _name(name), _gradeToSign(gradeSign), _gradeToExec(gradeExec), _signed(false)
 {
     std::cout << BLUE << "Constructor with name: " << name << " is called with grade: " << gradeSign << " and exec grade: " << gradeExec << RESET << std::endl;
     if (gradeSign < 1 || gradeExec < 1)

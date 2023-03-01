@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:39:48 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/18 13:13:47 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:06:52 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int main()
 
 	try
 	{
-		RobotomyRequestForm form("The President");
+		RobotomyRequestForm form("Robot");
 		std::cout << "RobotomyRequestForm attributes: " << form << std::endl;
 
 		Bureaucrat Bureaucrat1("Bureaucrat 1", 5);

@@ -1,29 +1,29 @@
-NAME =	Intern
+NAME	=	Intern
 
-SRCS =	main.cpp \
-		Bureaucrat.cpp \
-		Form.cpp \
-		PresidentialPardonForm.cpp \
-		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp \
-		Intern.cpp
+CXX		=	c++
 
-OBJS = 	$(SRCS:%.c=%.o)
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-FLAGS =	-Wall -Wextra -Werror -std=c++98
+SRCS	=	main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp Intern.cpp
 
-all: $(NAME)
+OBJS	=	$(SRCS:.cpp=.o)
 
-$(NAME): $(OBJS)
-	c++ $(OBJS) -o $(NAME)
+%.o : %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-%.o: %.c
-	c++ $(FLAGS) -c $< -o $@
+all : $(NAME)
 
-clean:
-	rm -f *.o
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-fclean: clean
+clean :
+	rm -rf $(OBJS)
+
+fclean : clean
 	rm -rf $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all
+
+.PHONY: all clean fclean re

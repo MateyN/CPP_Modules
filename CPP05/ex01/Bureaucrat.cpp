@@ -6,13 +6,13 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 12:39:41 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/13 12:02:51 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 02:53:59 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat:: Bureaucrat(void) : _name("Unknown")
+Bureaucrat:: Bureaucrat(void) : _name("Unknown"), _grade(150)
 {
     std::cout << GREEN << "Constructor called without name or grade" << RESET << std::endl;
     throw std::string ("Error: Bureaucrat cannot be instantiated without a grade!");

@@ -6,19 +6,19 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 10:40:22 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/01/20 11:02:45 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/28 23:24:17 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm:: PresidentialPardonForm(void) : _target(NULL), _signed(false), _gradeToSign(25), _gradeToExec(5)
+PresidentialPardonForm:: PresidentialPardonForm(void) : _target(NULL), _gradeToSign(25), _gradeToExec(5), _signed(false)
 {
     std::cout << GREEN << "PresidentialPardonForm constructor called without any target" << RESET << std::endl;
     throw std::string ("Error: PresidentialPardonForm cannot be instantiated without a target!");
 }
 
-PresidentialPardonForm:: PresidentialPardonForm(std::string target) : _target(target), _signed(false), _gradeToSign(25), _gradeToExec(5)
+PresidentialPardonForm:: PresidentialPardonForm(std::string target) : _target(target),_gradeToSign(25), _gradeToExec(5), _signed(false)
 {
     std::cout << BLUE << "PresidentialPardonForm constructor called with target " << _target << RESET << std::endl; 
 }

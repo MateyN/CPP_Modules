@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:30:53 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/17 10:47:03 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:49:45 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class   Span
             void    addNumber(int nb);
             int     shortestSpan(void);
             int     longestSpan(void);
-            void    addMoreNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+            void    addMoreNumbers(unsigned int range, time_t seed);
 
     public:
             unsigned int        _N;

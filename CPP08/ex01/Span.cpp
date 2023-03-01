@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:30:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/17 11:05:43 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:59:55 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Span:: Span(void)
 
 Span:: Span(unsigned int N)
 {
+    (void) N;
     //std::cout << "Span constructor is called." << std::endl;
 }
 
@@ -51,25 +52,22 @@ void Span:: addNumber(int nb)
     {
         throw MaxElementsException();
     }
-    //std::cout << "Number: " << nb << std::endl; // shows the number that has been added.
 }
 
-void Span:: addMoreNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void	Span::addMoreNumbers(unsigned int range, time_t seed)
 {
-    time_t seed;
-    srand(seed);
-    unsigned int range;
-    for (int i = 0; i < range; i++)
-    {
-        try
-        {
-            addNumber(rand());
-        }
-        catch (const std::exception &e)
-        {
-            throw MaxElementsException();
-        }
-    }
+	srand(seed);
+	for (size_t i = 0; i < range; i++)
+	{
+		try
+		{
+			addNumber(rand());
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
 }
 
 int Span:: shortestSpan()

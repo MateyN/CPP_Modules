@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:07:18 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/06 10:34:38 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:38:17 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 #include <iostream>
 
-/**
+/*
  * Passing the parameters as "T &a" instead of "T a" is better
- * because the program does not create a copy of "a" so is more efficient.
+ * because the program does not create a copy of "a".
  */
 
 template <typename T>

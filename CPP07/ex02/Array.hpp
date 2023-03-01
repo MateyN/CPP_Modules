@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:21:22 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/13 12:49:07 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:22:57 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ template<typename T>
 class Array
 {
     public:
-            Array(void) : _size(0), array(new T[0])
+            Array(void) : array(new T[0]), _size(0)
             {
                 //std::cout << "Default Array constructor is called with size 0." << std::endl;
                 this->array = new T[this->_size];
             }
-            Array(unsigned int n) : _size(n), array(new T[n])
+            Array(unsigned int n) : array(new T[n]), _size(n)
             {
                 //std::cout << "Array constructor called with size" << _size << std::endl;
                 this->array = new T[this->_size];

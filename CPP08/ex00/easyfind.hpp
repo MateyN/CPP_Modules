@@ -6,10 +6,9 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 13:11:07 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/14 19:37:34 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:43:44 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP

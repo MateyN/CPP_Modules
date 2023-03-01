@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:31:17 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/17 11:10:30 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/01 03:58:44 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,12 @@ int main()
   std::cout << "Tests with more numbers: " << std::endl;
   try
 	{
-		Span	sp(10000);
-    std::vector<int> v;
-    
-		for(int i = 1; i <= 10000; i++)
-			v.push_back(i);
-		sp.addMoreNumbers(v.begin(), v.end());
-		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
-		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+    Span a = Span(10000);
+		a.addMoreNumbers(10000, time(NULL));
+		std::cout << "shortest span is " << a.shortestSpan() << std::endl;
+		std::cout << "longest span is " << a.longestSpan() << std::endl << std::endl;
 	}
-	catch(const std::exception & e)
+  catch(const std::exception & e)
   {
     	std::cerr << e.what() << '\n';
   }

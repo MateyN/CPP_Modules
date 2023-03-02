@@ -70,19 +70,23 @@ void	Span::addMoreNumbers(unsigned int range, time_t seed)
 	}
 }
 
-int Span:: shortestSpan()
+int Span::shortestSpan()
 {
-    if (vec.size() <= 1)
+    if (vec.size() <= 1) // Check if there are enough elements in the vector
         throw (EmptyContainerException());
-    std::vector<int> v;
-    std::sort(vec.begin(), vec.end());
+
+    std::vector<int> v; // Create a new vector to store the difference between elements
+    std::sort(vec.begin(), vec.end()); // Sort the elements in the vector in ascending order
+
     unsigned int i = 0;
+
     while (i < vec.size() - 1)
     {
-        v.push_back(vec[i + 1] - vec[i]);
+        v.push_back(vec[i + 1] - vec[i]); // Calculate the difference between the current and next element
         i++;
     }
-    int ssp = *std::min_element(v.begin(), v.end());
+
+    int ssp = *std::min_element(v.begin(), v.end()); // Find the minimum element in the new vector
     return ssp;
 }
 

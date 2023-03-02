@@ -65,7 +65,7 @@ class Array
                 if (i >= this->_size || this->array == NULL)
                 {
                     std::cout << "Index: " << i << std::endl;
-                    throw std::exception();
+                    throw std::out_of_range("Index out of range");
                 }
                 return this->array[i];
             }

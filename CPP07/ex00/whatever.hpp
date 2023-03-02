@@ -18,6 +18,8 @@
 /*
  * Passing the parameters as "T &a" instead of "T a" is better
  * because the program does not create a copy of "a".
+ * const T&, because this allows the function to return a reference to one of the input objects,
+ * which is more efficient than returning a copy of the object.
  */
 
 template <typename T>
@@ -33,7 +35,7 @@ T swap(T &a, T &b)
 }
 
 template <typename T>
-T min(T &a, T &b)
+const T& min(const T& a, const T& b)
 {
     if (a < b)
         return a;
@@ -42,7 +44,7 @@ T min(T &a, T &b)
 }
 
 template <typename T>
-T max(T &a, T &b)
+const T& max(const T& a, const T& b)
 {
     if (a > b)
         return a;

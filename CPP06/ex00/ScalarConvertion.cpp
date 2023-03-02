@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 12:49:05 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/03/02 09:54:03 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:38:15 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,6 @@ ScalarConvertion ScalarConvertion::operator = (ScalarConvertion const & obj)
     (void) obj;
     std::cout << "ScalarConversion Copy assignment operator is called." << std::endl;
     return *this;
-}
-
-bool contains(std::string str, char c)
-{
-    return str.find(c) != std::string::npos;
 }
 
 int findDecimal(const std::string & dbl)
@@ -71,17 +66,17 @@ int findDecimal(const std::string & dbl)
  and with the specified precision number of digits after the decimal point.
  The std::fixed and std::setprecision() functions are used to set the precision and fixed flags of the stream.
  */
-std::string doubleToStr(double d, int precision)
+std::string convertDoubleToString(double value, int numDecimalPlaces)
 {
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(precision) << d; // // set fixed and precision flags, and convert double to string
+    stream << std::fixed << std::setprecision(numDecimalPlaces) << value; //set fixed and precision flags, and convert double to string
     return stream.str();
 }
 
-std::string floatToStr(float f, int precision)
+std::string convertFloatToString(float value, int numDecimalPlaces)
 {
     std::stringstream stream;
-    stream << std::fixed << std::setprecision(precision) << f;
+    stream << std::fixed << std::setprecision(numDecimalPlaces) << value;
     return stream.str();
 }
 
@@ -105,7 +100,8 @@ void ScalarConvertion::convert(std::string arg)
     return;
   }
 
-  if (arg == "+inf" || arg == "-inf") {
+  if (arg == "+inf" || arg == "-inf")
+  {
     std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
     std::cout << "float: " << arg << 'f' << std::endl;
@@ -123,33 +119,33 @@ void ScalarConvertion::convert(std::string arg)
         else
             std::cout << "char: non displayable" << std::endl;
             std::cout << "int: " << c << std::endl;
-            std::cout << "float: " << floatToStr(static_cast<float>(c), 0) << ".0f" << std::endl;
-            std::cout << "double: " << doubleToStr(static_cast<double>(c), 0) << ".0" << std::endl;
+            std::cout << "float: " << convertFloatToString(static_cast<float>(c), 0) << ".0f" << std::endl;
+            std::cout << "double: " << convertDoubleToString(static_cast<double>(c), 0) << ".0" << std::endl;
       return;
     }
     char c = arg[0];
     std::cout << "char: '" << c << "'" << std::endl;
     std::cout << "int: " << static_cast<int>(c) << std::endl;
-    std::cout << "float: " << floatToStr(static_cast<float>(c), 0) << 'f' << std::endl;
-    std::cout << "double: " << doubleToStr(static_cast<double>(c), 0) << std::endl;
+    std::cout << "float: " << convertFloatToString(static_cast<float>(c), 0) << 'f' << std::endl;
+    std::cout << "double: " << convertDoubleToString(static_cast<double>(c), 0) << std::endl;
     return;
   }
   std::string str = arg;
   double argDouble = stod(str);
   int decimalDigits = findDecimal(str);
 
-  if (doubleToStr(argDouble, decimalDigits) == str)
+  if (convertDoubleToString(argDouble, decimalDigits) == str)
   {
     double d = argDouble;
     char c = static_cast <char>(d);
     std::cout << "char: '" << (std::isprint(c) ? c : '?') << "'" << std::endl;
     std::cout << "int: " << static_cast<int>(d) << std::endl;
-    std::cout << "float: " << floatToStr(static_cast<float>(d), decimalDigits) << "f" << std::endl;
-    std::cout << "double: " << doubleToStr(d, decimalDigits) << std::endl;
+    std::cout << "float: " << convertFloatToString(static_cast<float>(d), decimalDigits) << "f" << std::endl;
+    std::cout << "double: " << convertDoubleToString(d, decimalDigits) << std::endl;
 
     return;
   }
-  std::string double_str = doubleToStr(stod(arg), findDecimal(arg));
+  std::string double_str = convertDoubleToString(stod(arg), findDecimal(arg));
   if (double_str + 'f' == arg)
   {
     float d = stof(arg);
@@ -159,8 +155,8 @@ void ScalarConvertion::convert(std::string arg)
     else
       std::cout << "char: non displayable" << std::endl;
     std::cout << "int: " << static_cast<int>(d) << std::endl;
-    std::cout << "float: " << floatToStr(static_cast<float>(d), findDecimal(arg)) << 'f' << std::endl;
-    std::cout << "double: " << doubleToStr(static_cast<double>(d), findDecimal(arg)) << std::endl;
+    std::cout << "float: " << convertFloatToString(static_cast<float>(d), findDecimal(arg)) << 'f' << std::endl;
+    std::cout << "double: " << convertDoubleToString(static_cast<double>(d), findDecimal(arg)) << std::endl;
     return;
   }
 }

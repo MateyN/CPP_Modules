@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:30:57 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/03/01 03:59:55 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:09:35 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,17 @@ Span:: ~Span(void)
     return ;
 }
 
-void Span:: addNumber(int nb)
+void Span::addNumber(int nb)
 {
-    if (vec.size() < _N)
+    if (vec.size() == 0) // Handle the case where vec has no elements
+    {
         vec.push_back(nb);
-    else
+    }
+    else if (vec.size() < _N) // Check if there's room to add another element
+    {
+        vec.push_back(nb);
+    }
+    else // Throw an exception if the maximum size has been reached
     {
         throw MaxElementsException();
     }

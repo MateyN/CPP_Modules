@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 11:07:18 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/02/08 17:38:17 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:30:47 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,13 @@
  */
 
 template <typename T>
-T swap(T &a, T &b)
+void swap(T &a, T &b)
 {
-    char tmp;
+    T tmp;
 
     tmp = a;
     a = b;
     b = tmp;
-
-    return tmp;
 }
 
 template <typename T>

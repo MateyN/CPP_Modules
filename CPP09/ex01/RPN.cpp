@@ -6,13 +6,13 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:07:30 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/05/22 13:58:41 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:28:33 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int doCalc(int n1, int n2, char sign)
+int operations(int n1, int n2, char sign)
 {
     switch(sign)
     {
@@ -28,7 +28,7 @@ int doCalc(int n1, int n2, char sign)
     return 0;
 }
 
-std::stack<int, std::vector<int> > doRPN(char *av)
+std::stack<int, std::vector<int> > ReversePolishNotation(char *av)
 {
     std::stack<int, std::vector<int> > stack;
     int i = 0;
@@ -37,11 +37,12 @@ std::stack<int, std::vector<int> > doRPN(char *av)
     {
         if (strchr("0123456789", av[i]) && av[i + 1] == ' ')
         stack.push(av[i] - '0');
-        else if (strchr("+-*/", av[i]) && (av[i + 1] == ' ' || av[i + 1] == 0) && stack.size() > 1)
+        else if (strchr("+-*/", av[i]) && (av[i + 1] == ' ' \
+            || av[i + 1] == 0) && stack.size() > 1)
         {
             tmp = stack.top();
             stack.pop();
-            stack.top() = doCalc(stack.top(), tmp, av[i]);
+            stack.top() = operations(tmp, stack.top(), av[i]);
         }
         else if (av[i] != ' ')
         {

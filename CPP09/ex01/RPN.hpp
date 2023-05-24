@@ -6,7 +6,7 @@
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:21:19 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/05/22 13:53:58 by mnikolov         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:28:36 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #define RED "\033[31m"
 #define RESET "\033[0m"
 
-int doCalc(int n1, int n2, char sign);
-std::stack<int, std::vector<int> > doRPN(char *av);
+int operations(int n1, int n2, char sign);
+std::stack<int, std::vector<int> > ReversePolishNotation(char *av);
 
 #endif

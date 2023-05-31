@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mnikolov <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 11:21:19 by mnikolov          #+#    #+#             */
-/*   Updated: 2023/05/30 12:41:09 by mnikolov         ###   ########.fr       */
+/*   Created: 2023/05/29 11:38:40 by mnikolov          #+#    #+#             */
+/*   Updated: 2023/05/30 12:30:09 by mnikolov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#include "PmergeMe.hpp"
 
-#include <iostream>
-#include <cstring>
-#include <stack>
-#include <deque>
-
-#define RED "\033[31m"
-#define RESET "\033[0m"
-
-int operations(int n1, int n2, char sign);
-std::stack<int, std::deque<int> > ReversePolishNotation(char *av);
-
-#endif
+int main(int ac, char** av)
+{
+    try
+    {
+        if (ac < 2)
+            throw "Error: Invalid number of arguments";
+        PmergeMe sort;
+        sort.sortElements(av);
+    }
+    catch (const char* str)
+    {
+        std::cerr << str << '\n';
+    }
+}
